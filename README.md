@@ -4,10 +4,10 @@
 
 ## Клонирование и запуск репозитория
 
-### Клонирование ветки `main-create-app-models-api-vlad`
+### Клонирование ветки 
 
 ```bash
-git clone -b main-create-app-models-api-vlad https://github.com/ericspade/SFHackaton2.git
+git clone https://github.com/Odiosus/nirin
 cd SFHackaton
 cd nirinsite
 ```
