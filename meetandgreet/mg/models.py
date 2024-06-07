@@ -57,3 +57,16 @@ class BookingNoAccount(models.Model):
 
     def __str__(self):
         return self.customername
+
+
+class Feedback(models.Model):
+    """Модель бота телеграмм"""
+    full_name = models.CharField(max_length=100)
+    number = models.CharField(max_length=100)
+    email = models.EmailField()
+    contact_method = models.CharField(max_length=100, null=True, blank=True)
+    time_created = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        app_label = 'meetandgreet'
+

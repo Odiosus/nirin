@@ -1,3 +1,4 @@
+from django.http import HttpRequest
 from django.shortcuts import get_object_or_404
 
 from .models import BookingNoAccount, Airport, Service
@@ -67,3 +68,18 @@ class BookingCreateApiView(CreateAPIView):
         serializer = BookingSerializer(new_res)
 
         return Response(serializer.data)
+
+
+def feedback(request: HttpRequest, template_name='index.html'):
+    if request.method == 'POST':
+        form = FeedbackForm(request.POST or None, template_name)
+        if form.is_valid():
+            form_data = form.data
+            full_name = form_data['full_name']
+            number = form_data['number']
+            email = form_data['email']
+            contact_method = form_data['contact_method']
+            Feedback.objects.create(full_name=full_name, number=number, email=email,
+                                    contact_method=contact_method)
+
+    return render(request, template_name=template_name, context={'form': FeedbackForm()})

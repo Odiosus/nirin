@@ -162,3 +162,4 @@ SIMPLE_JWT = {
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 TELEGRAM_TOKEN = os.getenv('TG_KEY')
+TELEGRAM_UTRLCONF = 'bot_conf.url'

@@ -1,13 +1,10 @@
-import os, django
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "reservations.settings")
-django.setup()
 import datetime
 from django.core.management.base import BaseCommand
 from django.dispatch import receiver
 from telegram import Bot, request, KeyboardButton, ReplyKeyboardMarkup
 from telegram.ext import CommandHandler, MessageHandler, filters, Updater, CallbackContext
-from bot_telegram.signals import feedback_data_ready
-from bot_telegram.models import Feedback
+from mg.signals import feedback_data_ready
+from mg.models import Feedback
 from reservations import settings
 
 white_list = [1780892295]
