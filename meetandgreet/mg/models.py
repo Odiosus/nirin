@@ -68,7 +68,7 @@ class Terminal(models.Model):
         verbose_name_plural = 'Терминалы'
 
 
-class Airport(models.Model):
+class SearchAirport(models.Model):
     """
     Модель таблицы Аэропорт, где хранятся данные об аэропортах.
     Поля: название аэропорта, код аэропорта, страна, город, список терминалов, список услуг,
@@ -112,7 +112,7 @@ class BookingNoAccount(models.Model):
     # электронная почта: текстовое поле (200 знаков), обязательное для заполнения
     email = models.EmailField(verbose_name='Электронная почта')
     # аэропорт: связь многие к многим с таблицей Аэропорт, обязательное для заполнения
-    airport = models.ManyToManyField(Airport, verbose_name='Аэропорт')
+    airport = models.ManyToManyField(SearchAirport, verbose_name='Аэропорт')
     # рейс: текстовое поле (200 знаков), обязательное для заполнения
     flight = models.CharField(max_length=200, verbose_name='Рейс')
     # дата бронирования: дата и время выбирает пользователь, обязательное для заполнения

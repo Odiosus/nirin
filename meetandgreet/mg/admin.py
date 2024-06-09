@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Airport, Service, BookingNoAccount, Client, Terminal
+from .models import SearchAirport, Service, BookingNoAccount, Client, Terminal
 
 
 @admin.register(Client)
@@ -28,8 +28,8 @@ class TerminalAdmin(admin.ModelAdmin):
     list_per_page = 10
 
 
-@admin.register(Airport)
-class AirportAdmin(admin.ModelAdmin):
+@admin.register(SearchAirport)
+class SearchAirportAdmin(admin.ModelAdmin):
     """
     Зарегал модель в админке. Нужно доделать (см. связи м2м❗️). Добавить филдсеты для эффектности.
     Протестить в связке с jazzmin
