@@ -13,19 +13,19 @@ from django.contrib.auth.models import User
 #         verbose_name_plural = 'Категории'
 
 
-class Client(models.Model):
-    """
-    Модель таблицы Клиент, где будут храниться данные о каждом пользователе.
-    Связь со встроенной моделью User
-    """
-    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Клиент')
-
-    def __str__(self):
-        return self.user
-
-    class Meta:
-        verbose_name = 'Клиент'
-        verbose_name_plural = 'Клиенты'
+# class Client(models.Model):
+#     """
+#     Модель таблицы Клиент, где будут храниться данные о каждом пользователе.
+#     Связь со встроенной моделью User
+#     """
+#     user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Клиент')
+#
+#     def __str__(self):
+#         return self.user
+#
+#     class Meta:
+#         verbose_name = 'Клиент'
+#         verbose_name_plural = 'Клиенты'
 
 
 class Service(models.Model):
@@ -52,20 +52,20 @@ class Service(models.Model):
         verbose_name_plural = 'Услуги'
 
 
-class Terminal(models.Model):
-    """
-    Модель таблицы Терминал, где хранятся данные о терминалах.
-    Поля: название терминала (подразумевается название терминала: А1, А2, В1, В2 и тп)
-    """
-    # название терминала: текстовое поле (3 знака), обязательное для заполнения
-    name = models.CharField(max_length=3, verbose_name='Терминал')
-
-    def __str__(self):
-        return self.name
-
-    class Meta:
-        verbose_name = 'Терминал'
-        verbose_name_plural = 'Терминалы'
+# class Terminal(models.Model):
+#     """
+#     Модель таблицы Терминал, где хранятся данные о терминалах.
+#     Поля: название терминала (подразумевается название терминала: А1, А2, В1, В2 и тп)
+#     """
+#     # название терминала: текстовое поле (3 знака), обязательное для заполнения
+#     name = models.CharField(max_length=3, verbose_name='Терминал')
+#
+#     def __str__(self):
+#         return self.name
+#
+#     class Meta:
+#         verbose_name = 'Терминал'
+#         verbose_name_plural = 'Терминалы'
 
 
 class SearchAirport(models.Model):
@@ -82,8 +82,8 @@ class SearchAirport(models.Model):
     country = models.CharField(max_length=200, verbose_name='Страна')
     # город: текстовое поле (200 знаков), обязательное для заполнения
     city = models.CharField(max_length=200, verbose_name='Город')
-    # ❗️терминал: связь многие к многим
-    terminals = models.ManyToManyField(Terminal, verbose_name='Терминал')
+    # # ❗️терминал: связь многие к многим
+    # terminals = models.ManyToManyField(Terminal, verbose_name='Терминал')
     # услуга: связь многие к многим
     service = models.ManyToManyField(Service, verbose_name='Услуга')
     # время создания записи: дата и время добавляются автоматически при создании записи
