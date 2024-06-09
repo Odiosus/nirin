@@ -173,9 +173,9 @@ JAZZMIN_SETTINGS = {
     # если он отсутствует или отсутствует)
     "site_header": "Meet + Greet",
 
-    # # Название бренда (максимум 19 символов) (по умолчанию current_admin_site.site_header,
-    # # если оно отсутствует или отсутствует)
-    # "site_brand": "Meet + Greet",
+    # Название бренда (максимум 19 символов) (по умолчанию current_admin_site.site_header,
+    # если оно отсутствует или отсутствует)
+    "site_brand": "Meet + Greet",
 
     # # Название бренда (максимум 19 символов) (по умолчанию current_admin_site.site_header,
     # # если оно отсутствует или отсутствует)
@@ -325,6 +325,39 @@ JAZZMIN_SETTINGS = {
 """
 Настройки библиотеки Jazzmin. Выбор темы. Пока подключена тема для. Дальше сделаем свой CSS под цветовую гамму сайта
 """
+# JAZZMIN_UI_TWEAKS = {
+#     "theme": "simplex",
+# }
+
 JAZZMIN_UI_TWEAKS = {
+    "navbar_small_text": True,
+    "footer_small_text": True,
+    "body_small_text": False,
+    "brand_small_text": False,
+    "brand_colour": "navbar-cyan",
+    "accent": "accent-lightblue",
+    "navbar": "navbar-info navbar-dark",
+    "no_navbar_border": False,
+    "navbar_fixed": False,
+    "layout_boxed": False,
+    "footer_fixed": False,
+    "sidebar_fixed": False,
+    "sidebar": "sidebar-light-info",
+    "sidebar_nav_small_text": True,
+    "sidebar_disable_expand": False,
+    "sidebar_nav_child_indent": False,
+    "sidebar_nav_compact_style": True,
+    "sidebar_nav_legacy_style": False,
+    "sidebar_nav_flat_style": False,
     "theme": "simplex",
+    "dark_mode_theme": None,
+    "button_classes": {
+        "primary": "btn-primary",
+        "secondary": "btn-secondary",
+        "info": "btn-info",
+        "warning": "btn-warning",
+        "danger": "btn-danger",
+        "success": "btn-success"
+    },
+    "actions_sticky_top": False
 }

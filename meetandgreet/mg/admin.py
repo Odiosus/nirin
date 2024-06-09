@@ -1,17 +1,17 @@
 from django.contrib import admin
-from .models import Airport, Service, BookingNoAccount, Customer, Terminal
+from .models import Airport, Service, BookingNoAccount, Client, Terminal
 
 
-@admin.register(Customer)
-class CustomerAdmin(admin.ModelAdmin):
+@admin.register(Client)
+class ClientAdmin(admin.ModelAdmin):
     """
     Зарегал модель в админке. Нужно доделать. Добавить филдсеты для эффектности.
     Протестить в связке с jazzmin
     """
-    list_display = ('customer',)
-    list_filter = ('customer',)
-    search_fields = ('customer',)
-    list_display_links = ('customer',)
+    list_display = ('user',)
+    list_filter = ('user',)
+    search_fields = ('user',)
+    list_display_links = ('user',)
     list_per_page = 10
 
 
