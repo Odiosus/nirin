@@ -1,7 +1,7 @@
 from django.http import HttpRequest
 from django.shortcuts import get_object_or_404
 
-from .models import BookingNoAccount, Airport, Service
+from .models import BookingNoAccount, SearchAirport, Service
 from .serializer import (
     BookingSerializer,
     AirportSerializer, ServiceSerializer
@@ -24,7 +24,7 @@ import json
 
 class AirportView(ListAPIView):
     serializer_class = AirportSerializer
-    queryset = Airport.objects.order_by('-id')
+    queryset = SearchAirport.objects.order_by('-id')
 
 
 class ServiceView(ListAPIView):
@@ -58,7 +58,7 @@ class BookingCreateApiView(CreateAPIView):
         print(request.data['airport'])
 
         for airport in request.data['airport']:
-            airport_obj = Airport.objects.get(airport_name=request.data['airport']['airport_name'])
+            airport_obj = SearchAirport.objects.get(airport_name=request.data['airport']['airport_name'])
             new_res.airport.add(airport_obj)
 
         for service in request.data['service']:

@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from .models import (
-    BookingNoAccount, Airport, Service
+    BookingNoAccount, SearchAirport, Service
 )
 import json
 
@@ -19,7 +19,7 @@ def attempt_json_deserialize(data, expect_type=None):
 
 class AirportSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Airport
+        model = SearchAirport
         fields = '__all__'
 
     def create(self, validated_data):

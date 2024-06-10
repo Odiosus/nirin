@@ -4,10 +4,10 @@
 
 ## Клонирование и запуск репозитория
 
-### Клонирование ветки `main-create-app-models-api-vlad`
+### Клонирование ветки 
 
 ```bash
-git clone -b main-create-app-models-api-vlad https://github.com/ericspade/SFHackaton2.git
+git clone https://github.com/Odiosus/nirin
 cd SFHackaton
 cd nirinsite
 ```
@@ -66,3 +66,22 @@ python manage.py runserver
 Swagger предоставляет удобный интерфейс для взаимодействия с вашим API. Чтобы просмотреть документацию API, перейдите по адресу `http://127.0.0.1:8000/swagger/`.
 
 Вы также можете использовать ReDoc для документации API по адресу `http://127.0.0.1:8000/redoc/`.
+
+### Создание суперюзера и вход в админ-панель
+
+Остановить локальный сервер, если он запущен (комбинация клавиш `ctr + C`)
+Ввести команду
+
+```bash
+python manage.py createsuperuser
+```
+Ввести логин, электронную почту (можно пропустить нажав ENTER), пароль.
+
+Запустите сервер разработки.
+
+```bash
+python manage.py runserver
+```
+
+Перейти по адресу `http://127.0.0.1:8000/admin/` для входа в админку.
+Ввести ранее указанные логин и пароль
