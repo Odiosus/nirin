@@ -109,7 +109,7 @@ class BookingNoAccount(models.Model):
     customername = models.CharField(max_length=200, verbose_name='Имя')
     # номер телефона: текстовое поле (14 знаков), обязательное для заполнения
     phone_number = models.CharField(max_length=14, verbose_name='Номер телефона')
-    # электронная почта: текстовое поле (200 знаков), обязательное для заполнения
+    # электронная почта: текстовое поле (254 знаков), обязательное для заполнения
     email = models.EmailField(verbose_name='Электронная почта')
     # аэропорт: связь многие к многим с таблицей Аэропорт, обязательное для заполнения
     airport = models.ManyToManyField(SearchAirport, verbose_name='Аэропорт')
