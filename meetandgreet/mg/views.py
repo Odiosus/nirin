@@ -1,4 +1,9 @@
+from django.shortcuts import render
 from django.http import HttpRequest
+
+from .forms import FeedbackForm
+from .models import Feedback
+
 from django.shortcuts import get_object_or_404
 
 from .models import BookingNoAccount, SearchAirport, Service

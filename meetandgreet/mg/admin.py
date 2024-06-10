@@ -95,3 +95,12 @@ class BookingNoAccountAdmin(admin.ModelAdmin):
     #             obj.note_block_description_field) > 100 else obj.note_block_description_field
     #
     # short_note_block_description_field.short_description = 'Краткое описание'
+
+
+class FeedbackAdmin(admin.ModelAdmin):
+    list_display = ('id', 'full_name', 'number', 'email', 'time_created')
+    list_filter = ('id', 'full_name', 'number', 'email', 'time_created')
+    search_fields = ('id', 'full_name', 'number', 'email', 'time_created')
+    ordering = ('id', 'full_name', 'number', 'email', 'time_created')
+
+admin.site.register(Feedback)
