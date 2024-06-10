@@ -34,7 +34,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'drf_yasg',
     'mg',
-    'accounts',
+    # 'accounts',
 ]
 
 REST_FRAMEWORK = {
@@ -208,7 +208,7 @@ JAZZMIN_SETTINGS = {
 
     # Имя поля в модели пользователя, которое содержит аватар ImageField/URLField/Charfield или вызываемый объект,
     # который получает пользователя
-    "user_avatar": None,
+    # "user_avatar": None,
 
     ############
     # Top Menu #
@@ -287,7 +287,7 @@ JAZZMIN_SETTINGS = {
     # Related Modal #
     #################
     # Используйте модальные окна вместо всплывающих окон (False по умолчанию)
-    "related_modal_active": True,
+    # "related_modal_active": True,
 
     #############
     # UI Tweaks #
