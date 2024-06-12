@@ -8,8 +8,7 @@
 
 ```bash
 git clone https://github.com/Odiosus/nirin
-cd SFHackaton
-cd nirinsite
+cd nirin
 ```
 
 ### Создание виртуального окружения
@@ -46,6 +45,7 @@ Django требует наличия `SECRET_KEY` для обеспечения 
 Выполните команды для применения миграций и сбора статических файлов.
 
 ```bash
+cd meetandgreet
 python manage.py makemigrations
 python manage.py migrate
 python manage.py collectstatic
