@@ -30,4 +30,6 @@ jobs:
 
     - name: Run Tests
       run: |
+        cd meetandgreet  
         python manage.py test
+
