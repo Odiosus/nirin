@@ -27,9 +27,12 @@ class AirportSerializer(serializers.ModelSerializer):
 
 
 class ServiceSerializer(serializers.ModelSerializer):
+    """
+    Услуги
+    """
     class Meta:
-        model = Service
-        fields = '__all__'
+        model = Service  # указываем модель, которую хотим сериализовать
+        fields = ('name', 'desc', 'price')  # явно прописываем поля, которые хотим сериализовать
 
     def create(self, validated_data):
         return super().create(self.name)

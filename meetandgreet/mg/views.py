@@ -26,6 +26,18 @@ class AirportView(ListAPIView):
     queryset = SearchAirport.objects.order_by('-id')
 
 
+class ServiceListView(APIView):
+    """
+    Выводим список всех услуг
+    """
+
+    # создаем гет запрос на получение всех услуг
+    def get(self, request):
+        services = Service.objects.all()  # выбираем все записи об услугах
+        serializer = ServiceSerializer(services, many=True)  # сериализуем данные (many=True - много записей)
+        return Response(serializer.data)  # возвращаем сериализованные данные
+
+
 class ServiceView(ListAPIView):
     serializer_class = ServiceSerializer
     queryset = Service.objects.order_by('-id')
