@@ -3,7 +3,7 @@ from django.shortcuts import get_object_or_404
 from .models import BookingNoAccount, SearchAirport, Service
 from .serializer import (
     BookingSerializer,
-    AirportSerializer, ServiceSerializer
+    AirportSerializer, ServiceDetailSerializer, ServiceListSerializer
 )
 from rest_framework import status
 from rest_framework.response import Response
@@ -27,20 +27,27 @@ class AirportView(ListAPIView):
 
 
 class ServiceListView(APIView):
-    """
-    Выводим список всех услуг
-    """
+    """Вывод списка всех услуг"""
 
     # создаем гет запрос на получение всех услуг
     def get(self, request):
         services = Service.objects.all()  # выбираем все записи об услугах
-        serializer = ServiceSerializer(services, many=True)  # сериализуем данные (many=True - много записей)
+        serializer = ServiceListSerializer(services, many=True)  # сериализуем данные (many=True - все записи)
         return Response(serializer.data)  # возвращаем сериализованные данные
 
 
-class ServiceView(ListAPIView):
-    serializer_class = ServiceSerializer
-    queryset = Service.objects.order_by('-id')
+class ServiceDetailView(APIView):
+    """Вывод одной услуги"""
+
+    # создаем гет запрос на получение одной услуги (pk = id услуги)
+    def get(self, request, pk):
+        service = Service.objects.get(id=pk)  # выбираем конкретную услуги по id
+        serializer = ServiceDetailSerializer(service)  # сериализуем данные (только одну запись)
+        return Response(serializer.data)  # возвращаем сериализованные данные
+
+# class ServiceView(ListAPIView):
+#     serializer_class = ServiceSerializer
+#     queryset = Service.objects.order_by('-id')
 
 
 class BookingCreateApiView(CreateAPIView):
