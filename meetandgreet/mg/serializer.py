@@ -5,28 +5,7 @@ from .models import (
 import json
 
 
-# def attempt_json_deserialize(data, expect_type=None):
-#     try:
-#         data = json.loads(data)
-#     except (TypeError, json.decoder.JSONDecodeError):
-#         pass
-#
-#     if expect_type is not None and not isinstance(data, expect_type):
-#         raise ValueError(f"Got {type(data)} but expected {expect_type}.")
-#
-#     return data
-
-
-class AirportSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = SearchAirport
-        fields = '__all__'
-
-    def create(self, validated_data):
-        return super().create(self.name)
-
-
-class ServiceListSerializer(serializers.ModelSerializer):
+class ServiceSerializer(serializers.ModelSerializer):
     """Сериализация списка всех услуг"""
 
     class Meta:
@@ -37,15 +16,21 @@ class ServiceListSerializer(serializers.ModelSerializer):
     #     return super().create(self.name)
 
 
-class ServiceDetailSerializer(serializers.ModelSerializer):
-    """Сериализация одной услуги"""
+class SearchAirportSerializer(serializers.ModelSerializer):
+    """Сериализация списка всех аэропортов"""
+    service = ServiceSerializer(read_only=True, many=True)
+
     class Meta:
-        model = Service  # указываем модель, которую хотим сериализовать
-        fields = ('name', 'desc', 'price')  # явно прописываем поля, которые хотим сериализовать
+        model = SearchAirport  # сериализуем модель SearchAirport
+        exclude = ("time_add", "time_update")  # все поля, кроме этих
+
+    # def create(self, validated_data):
+    #     return super().create(self.name)
 
 
 class BookingSerializer(serializers.ModelSerializer):
-    airport_list = AirportSerializer(many=True, read_only=True)
+    airport_list = SearchAirportSerializer(many=True, read_only=True)
+
     # service_list = ServiceSerializer(many=True, read_only=True)
 
     class Meta:

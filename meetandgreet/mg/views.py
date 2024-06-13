@@ -3,7 +3,7 @@ from django.shortcuts import get_object_or_404
 from .models import BookingNoAccount, SearchAirport, Service
 from .serializer import (
     BookingSerializer,
-    AirportSerializer, ServiceDetailSerializer, ServiceListSerializer
+    SearchAirportSerializer, ServiceSerializer
 )
 from rest_framework import status
 from rest_framework.response import Response
@@ -21,33 +21,22 @@ from urllib.parse import unquote
 import json
 
 
-class AirportView(ListAPIView):
-    serializer_class = AirportSerializer
-    queryset = SearchAirport.objects.order_by('-id')
-
-
-class ServiceListView(APIView):
+class ServiceListView(ListAPIView):
     """Вывод списка всех услуг"""
-
-    # создаем гет запрос на получение всех услуг
-    def get(self, request):
-        services = Service.objects.all()  # выбираем все записи об услугах
-        serializer = ServiceListSerializer(services, many=True)  # сериализуем данные (many=True - все записи)
-        return Response(serializer.data)  # возвращаем сериализованные данные
+    serializer_class = ServiceSerializer  # сериализуем данные
+    queryset = Service.objects.order_by('-id')  # выбираем все записи об услугах, сортируем по id
 
 
-class ServiceDetailView(APIView):
+class ServiceDetailView(RetrieveAPIView):
     """Вывод одной услуги"""
+    serializer_class = ServiceSerializer  # сериализуем данные
+    queryset = Service.objects.all()  # выбираем все записи об услугах, но выводим 1 (RetrieveAPIView)
 
-    # создаем гет запрос на получение одной услуги (pk = id услуги)
-    def get(self, request, pk):
-        service = Service.objects.get(id=pk)  # выбираем конкретную услуги по id
-        serializer = ServiceDetailSerializer(service)  # сериализуем данные (только одну запись)
-        return Response(serializer.data)  # возвращаем сериализованные данные
 
-# class ServiceView(ListAPIView):
-#     serializer_class = ServiceSerializer
-#     queryset = Service.objects.order_by('-id')
+class AirportListView(ListAPIView):
+    """Вывод списка всех аэропортов"""
+    serializer_class = SearchAirportSerializer  # сериализуем данные
+    queryset = SearchAirport.objects.order_by('-id')  # выбираем все записи об аэропортах, сортируем по id
 
 
 class BookingCreateApiView(CreateAPIView):
