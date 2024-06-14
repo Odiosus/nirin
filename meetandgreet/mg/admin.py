@@ -60,12 +60,8 @@ class SearchAirportAdmin(admin.ModelAdmin):
 
     @admin.register(BookingNoAccount)
     class BookingNoAccountAdmin(admin.ModelAdmin):
-        """
-        Зарегал модель в админке. Нужно доделать (см. связи м2м - airport, service). Добавить филдсеты для эффектности.
-        Протестить в связке с jazzmin
-        """
         list_display = (
-            'customer_name', 'phone_number', 'email', 'flight', 'booking_date', 'number_of_passengers', 'note')
+        'customer_name', 'phone_number', 'email', 'flight', 'booking_date', 'number_of_passengers', 'note')
         list_filter = ('airport', 'flight', 'booking_date')
         search_fields = ('customer_name', 'service__name', 'phone_number', 'email')
         list_display_links = ('customer_name',)

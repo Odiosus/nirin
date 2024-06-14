@@ -53,7 +53,7 @@ class BookingCreateApiView(CreateAPIView):
         return Response(response_data)
 
     def perform_create(self, serializer):
-
+        """Функция, непосредственно создающая запись в базе данных"""
         data = serializer.validated_data
         booking = BookingNoAccount.objects.create(
             customer_name=data["customer_name"],
@@ -65,12 +65,5 @@ class BookingCreateApiView(CreateAPIView):
             note=data.get('note')
         )
 
-        if 'airport' in self.request.data:
-            for airport_data in self.request.data['airport']:
-                airport = SearchAirport.objects.get(name=airport_data['name'])
-                booking.airport.add(airport)
-
-        if 'service' in self.request.data:
-            for service_data in self.request.data['service']:
-                service = Service.objects.get(name=service_data['name'])
-                booking.service.add(service)
+        booking.airport.set(data['airport'])
+        booking.service.set(data['service'])
