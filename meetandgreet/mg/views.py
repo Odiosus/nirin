@@ -1,9 +1,10 @@
 from django.shortcuts import get_object_or_404
-
+from rest_framework import viewsets, filters
+from django_filters.rest_framework import DjangoFilterBackend
 from .models import BookingNoAccount, SearchAirport, Service
 from .serializer import (
     BookingSerializer,
-    SearchAirportSerializer, ServiceSerializer
+    SearchAirportSerializer, ServiceSerializer,
 )
 from rest_framework import status
 from rest_framework.response import Response
@@ -37,6 +38,15 @@ class AirportListView(ListAPIView):
     """Вывод списка всех аэропортов"""
     serializer_class = SearchAirportSerializer  # сериализуем данные
     queryset = SearchAirport.objects.order_by('-id')  # выбираем все записи об аэропортах, сортируем по id
+
+
+class SearchAirportViewSet(viewsets.ModelViewSet):
+    """Поиск по всем аэропортам"""
+    queryset = SearchAirport.objects.all()  # выбираем все записи
+    serializer_class = SearchAirportSerializer  # сериализуем данные
+    filter_backends = [DjangoFilterBackend, filters.SearchFilter]  # настройка фильтрации
+    filterset_fields = ['country', 'city']  # указываем поля, по которым можно фильтровать TODO нужна ли фильтрация?
+    search_fields = ['airport_name', 'iata', 'country', 'city']  # указываем поля, по которым можно искать
 
 
 class BookingCreateApiView(CreateAPIView):

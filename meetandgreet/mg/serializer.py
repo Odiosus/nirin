@@ -32,7 +32,8 @@ class BookingSerializer(serializers.ModelSerializer):
     """Сериализация списка всех бронирований"""
     airport = serializers.PrimaryKeyRelatedField(queryset=SearchAirport.objects.all(), many=True)  # сериализуем
     # модель SearchAirport
-    service = serializers.PrimaryKeyRelatedField(queryset=Service.objects.all(), many=True)   # сериализуем модель
+    service = serializers.PrimaryKeyRelatedField(queryset=Service.objects.all(), many=True)  # сериализуем модель
+
     # Service
 
     class Meta:

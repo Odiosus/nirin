@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'drf_yasg',
     'mg',
+    'django_filters',  # для фильтрации в SearchAirportViewSet
     # 'accounts',
 ]
 
