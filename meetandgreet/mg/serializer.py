@@ -29,11 +29,11 @@ class SearchAirportSerializer(serializers.ModelSerializer):
 
 
 class BookingSerializer(serializers.ModelSerializer):
-    airport_list = SearchAirportSerializer(many=True, read_only=True)
-    service_list = ServiceSerializer(many=True, read_only=True)
+    """Сериализация списка всех бронирований"""
+    airport = SearchAirportSerializer(many=True, read_only=True)  # сериализуем модель SearchAirport
+    service = ServiceSerializer(many=True, read_only=True)  # сериализуем модель Service
 
     class Meta:
-        model = BookingNoAccount
-        fields = ('customername', 'phone_number', 'email', 'airport_list', 'flight', 'booking_date',
-                  'numberofpassengers', 'service_list', 'note')
-        depth = 1
+        model = BookingNoAccount  # сериализуем модель BookingNoAccount
+        fields = ('customer_name', 'phone_number', 'email', 'airport', 'flight', 'booking_date',
+                  'number_of_passengers', 'service', 'note')  # явно прописываем поля, которые хотим сериализовать
