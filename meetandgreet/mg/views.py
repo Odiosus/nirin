@@ -40,38 +40,30 @@ class AirportListView(ListAPIView):
 
 
 class BookingCreateApiView(CreateAPIView):
-    # permission_classes = (IsAuthenticated,)
+    """Вывод создания новой заявки"""
     serializer_class = BookingSerializer
     queryset = BookingNoAccount.objects.all()
 
     def create(self, request, *args, **kwargs):
-        response = {}
+        """Функция создания новой заявки"""
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-        headers = self.get_success_headers(serializer.data)
-        response['data'] = serializer.data
-        response['response'] = "OK"
+        self.perform_create(serializer)
+        response_data = serializer.data
+        return Response(response_data)
 
-        data = request.data
+    def perform_create(self, serializer):
+        """Функция, непосредственно создающая запись в базе данных"""
+        data = serializer.validated_data
+        booking = BookingNoAccount.objects.create(
+            customer_name=data["customer_name"],
+            phone_number=data["phone_number"],
+            email=data["email"],
+            flight=data['flight'],
+            booking_date=data['booking_date'],
+            number_of_passengers=data['number_of_passengers'],
+            note=data.get('note')
+        )
 
-        new_res = BookingNoAccount.objects.create(customername=data["customername"],
-                                                  phone_number=data["phone_number"],
-                                                  email=data["email"],
-                                                  flight=data['flight'],
-                                                  booking_date=data['booking_date'],
-                                                  numberofpassengers=data['numberofpassengers'],
-                                                  note=data['note'], )
-
-        print(request.data['airport'])
-
-        for airport in request.data['airport']:
-            airport_obj = SearchAirport.objects.get(airport_name=request.data['airport']['airport_name'])
-            new_res.airport.add(airport_obj)
-
-        for service in request.data['service']:
-            service_obj = Service.objects.get(name=request.data['service']['name'])
-            new_res.service.add(service_obj)
-
-        serializer = BookingSerializer(new_res)
-
-        return Response(serializer.data)
+        booking.airport.set(data['airport'])
+        booking.service.set(data['service'])

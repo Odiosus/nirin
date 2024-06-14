@@ -58,32 +58,30 @@ class SearchAirportAdmin(admin.ModelAdmin):
         }),
     )
 
+    @admin.register(BookingNoAccount)
+    class BookingNoAccountAdmin(admin.ModelAdmin):
+        list_display = (
+        'customer_name', 'phone_number', 'email', 'flight', 'booking_date', 'number_of_passengers', 'note')
+        list_filter = ('airport', 'flight', 'booking_date')
+        search_fields = ('customer_name', 'service__name', 'phone_number', 'email')
+        list_display_links = ('customer_name',)
+        ordering = ['-booking_date']
+        readonly_fields = ('time_add', 'time_update')
+        list_per_page = 10
 
-@admin.register(BookingNoAccount)
-class BookingNoAccountAdmin(admin.ModelAdmin):
-    """
-    Зарегал модель в админке. Нужно доделать (см. связи м2м - airport, service). Добавить филдсеты для эффектности.
-    Протестить в связке с jazzmin
-    """
-    list_display = ('customername', 'phone_number', 'email', 'flight', 'booking_date', 'numberofpassengers',
-                    'note',)
-    list_filter = ('airport', 'flight', 'booking_date',)
-    search_fields = ('customername', 'service', 'phone_number', 'email',)
-    list_display_links = ('customername',)
-    ordering = ['-booking_date']
-    readonly_fields = ('time_add', 'time_update',)
-    list_per_page = 10
-    fieldsets = (
-        ('Информация о бронировании', {
-            'fields': ('customername', 'phone_number', 'email', 'flight', 'booking_date', 'numberofpassengers')
-        }),
-        ('Примечания', {
-            'fields': ('note',)
-        }),
-        ('Время добавления и обновления записи', {
-            'fields': ('time_add', 'time_update')
-        }),
-    )
+        fieldsets = (
+            ('Информация о бронировании', {
+                'fields': ('customer_name', 'phone_number', 'email', 'flight', 'booking_date', 'number_of_passengers')
+            }),
+            ('Примечания', {
+                'fields': ('note',)
+            }),
+            ('Время добавления и обновления записи', {
+                'fields': ('time_add', 'time_update')
+            }),
+        )
+
+        filter_horizontal = ('airport', 'service')
 
     # TODO: добавить функцию для отображения краткого описания примечания в админке
     # def short_note_block_description_field(self, obj):
