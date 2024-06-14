@@ -1,13 +1,12 @@
 from django.urls import path
 
-from .views import (
-    BookingCreateApiView, AirportView, ServiceView
-)
+from . import views
 
 app_name = 'mg'
 
 urlpatterns = [
-    path('airports/', AirportView.as_view(), name="airport_list"),
-    path('services/', ServiceView.as_view(), name="service_list"),
-    path('book/', BookingCreateApiView.as_view(), name='book_room'),
+    path('service/', views.ServiceListView.as_view()),  # доступ к списку всех
+    path('service/<int:pk>/', views.ServiceDetailView.as_view()),  # доступ к одной услуге
+    path('airport/', views.AirportListView.as_view()),  # доступ к списку всех аэропортов
+    path('booking/', views.BookingCreateApiView.as_view()),
 ]

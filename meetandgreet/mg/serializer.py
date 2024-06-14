@@ -30,8 +30,7 @@ class SearchAirportSerializer(serializers.ModelSerializer):
 
 class BookingSerializer(serializers.ModelSerializer):
     airport_list = SearchAirportSerializer(many=True, read_only=True)
-
-    # service_list = ServiceSerializer(many=True, read_only=True)
+    service_list = ServiceSerializer(many=True, read_only=True)
 
     class Meta:
         model = BookingNoAccount

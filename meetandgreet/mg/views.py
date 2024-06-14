@@ -40,7 +40,7 @@ class AirportListView(ListAPIView):
 
 
 class BookingCreateApiView(CreateAPIView):
-    permission_classes = (IsAuthenticated,)
+    # permission_classes = (IsAuthenticated,)
     serializer_class = BookingSerializer
     queryset = BookingNoAccount.objects.all()
 
