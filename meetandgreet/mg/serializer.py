@@ -1,8 +1,5 @@
 from rest_framework import serializers
-from .models import (
-    BookingNoAccount, SearchAirport, Service
-)
-import json
+from .models import BookingNoAccount, SearchAirport, Service
 
 
 class ServiceSerializer(serializers.ModelSerializer):
@@ -11,9 +8,6 @@ class ServiceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Service  # указываем модель, которую хотим сериализовать
         fields = ('name', 'desc', 'price')  # явно прописываем поля, которые хотим сериализовать
-
-    # def create(self, validated_data):
-    #     return super().create(self.name)
 
 
 class SearchAirportSerializer(serializers.ModelSerializer):
@@ -24,17 +18,13 @@ class SearchAirportSerializer(serializers.ModelSerializer):
         model = SearchAirport  # сериализуем модель SearchAirport
         exclude = ("time_add", "time_update")  # все поля, кроме этих
 
-    # def create(self, validated_data):
-    #     return super().create(self.name)
-
 
 class BookingSerializer(serializers.ModelSerializer):
     """Сериализация списка всех бронирований"""
-    airport = serializers.PrimaryKeyRelatedField(queryset=SearchAirport.objects.all(), many=True)  # сериализуем
-    # модель SearchAirport
-    service = serializers.PrimaryKeyRelatedField(queryset=Service.objects.all(), many=True)  # сериализуем модель
-
-    # Service
+    # сериализуем модель SearchAirport
+    airport = serializers.PrimaryKeyRelatedField(queryset=SearchAirport.objects.all(), many=True)
+    # сериализуем модель Service
+    service = serializers.PrimaryKeyRelatedField(queryset=Service.objects.all(), many=True)
 
     class Meta:
         model = BookingNoAccount  # сериализуем модель BookingNoAccount

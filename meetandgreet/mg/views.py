@@ -1,25 +1,9 @@
-from django.shortcuts import get_object_or_404
 from rest_framework import viewsets, filters
 from django_filters.rest_framework import DjangoFilterBackend
 from .models import BookingNoAccount, SearchAirport, Service
-from .serializer import (
-    BookingSerializer,
-    SearchAirportSerializer, ServiceSerializer,
-)
-from rest_framework import status
+from .serializer import BookingSerializer, SearchAirportSerializer, ServiceSerializer
 from rest_framework.response import Response
-from rest_framework.views import APIView
-from rest_framework.generics import (
-    ListAPIView,
-    CreateAPIView,
-    RetrieveAPIView,
-)
-from rest_framework.permissions import (
-    IsAuthenticated,
-    IsAdminUser
-)
-from urllib.parse import unquote
-import json
+from rest_framework.generics import ListAPIView, CreateAPIView, RetrieveAPIView
 
 
 class ServiceListView(ListAPIView):

@@ -1,31 +1,4 @@
 from django.db import models
-from django.contrib.auth.models import User
-
-
-# class Category(models.Model):
-#     category_name = models.CharField(max_length=30, verbose_name='Категория')
-#
-#     def __str__(self):
-#         return self.category_name
-#
-#     class Meta:
-#         verbose_name = 'Категория'
-#         verbose_name_plural = 'Категории'
-
-
-# class Client(models.Model):
-#     """
-#     Модель таблицы Клиент, где будут храниться данные о каждом пользователе.
-#     Связь со встроенной моделью User
-#     """
-#     user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Клиент')
-#
-#     def __str__(self):
-#         return self.user
-#
-#     class Meta:
-#         verbose_name = 'Клиент'
-#         verbose_name_plural = 'Клиенты'
 
 
 class Service(models.Model):
@@ -48,22 +21,6 @@ class Service(models.Model):
     class Meta:
         verbose_name = 'Услуга'
         verbose_name_plural = 'Услуги'
-
-
-# class Terminal(models.Model):
-#     """
-#     Модель таблицы Терминал, где хранятся данные о терминалах.
-#     Поля: название терминала (подразумевается название терминала: А1, А2, В1, В2 и тп)
-#     """
-#     # название терминала: текстовое поле (3 знака), обязательное для заполнения
-#     name = models.CharField(max_length=3, verbose_name='Терминал')
-#
-#     def __str__(self):
-#         return self.name
-#
-#     class Meta:
-#         verbose_name = 'Терминал'
-#         verbose_name_plural = 'Терминалы'
 
 
 class SearchAirport(models.Model):

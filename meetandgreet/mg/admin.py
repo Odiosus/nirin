@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import SearchAirport, Service, BookingNoAccount  # Client, Terminal
+from .models import SearchAirport, Service, BookingNoAccount
 
 
 @admin.register(Service)
