@@ -1,31 +1,4 @@
 from django.db import models
-from django.contrib.auth.models import User
-
-
-# class Category(models.Model):
-#     category_name = models.CharField(max_length=30, verbose_name='Категория')
-#
-#     def __str__(self):
-#         return self.category_name
-#
-#     class Meta:
-#         verbose_name = 'Категория'
-#         verbose_name_plural = 'Категории'
-
-
-# class Client(models.Model):
-#     """
-#     Модель таблицы Клиент, где будут храниться данные о каждом пользователе.
-#     Связь со встроенной моделью User
-#     """
-#     user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Клиент')
-#
-#     def __str__(self):
-#         return self.user
-#
-#     class Meta:
-#         verbose_name = 'Клиент'
-#         verbose_name_plural = 'Клиенты'
 
 
 class Service(models.Model):
@@ -50,22 +23,6 @@ class Service(models.Model):
         verbose_name_plural = 'Услуги'
 
 
-# class Terminal(models.Model):
-#     """
-#     Модель таблицы Терминал, где хранятся данные о терминалах.
-#     Поля: название терминала (подразумевается название терминала: А1, А2, В1, В2 и тп)
-#     """
-#     # название терминала: текстовое поле (3 знака), обязательное для заполнения
-#     name = models.CharField(max_length=3, verbose_name='Терминал')
-#
-#     def __str__(self):
-#         return self.name
-#
-#     class Meta:
-#         verbose_name = 'Терминал'
-#         verbose_name_plural = 'Терминалы'
-
-
 class SearchAirport(models.Model):
     """Модель таблицы Аэропорт, где хранятся данные об аэропортах.
     Поля: название аэропорта, код аэропорта, страна, город, список терминалов, список услуг,
@@ -81,7 +38,7 @@ class SearchAirport(models.Model):
     # # ❗️терминал: связь многие к многим
     # terminals = models.ManyToManyField(Terminal, verbose_name='Терминал')
     # услуга: связь многие к многим
-    service = models.ManyToManyField(Service, verbose_name='Услуга')
+    service = models.ManyToManyField(Service, verbose_name='Услуга', related_name='services')
     # время создания записи: дата и время добавляются автоматически при создании записи
     time_add = models.DateTimeField(auto_now_add=True, verbose_name='Время добавления')
     # время изменения записи: дата и время изменяются автоматически при изменении записи
@@ -102,7 +59,7 @@ class BookingNoAccount(models.Model):
     услуга, примечание, время создания/изменения записи о бронировании без аккаунта.
     """
     # Имя: текстовое поле (200 знаков), обязательное для заполнения
-    customer_name = models.CharField(max_length=200, verbose_name='Имя')
+    customer_name = models.CharField(max_length=200, verbose_name='Имя клиента')
     # Номер телефона: текстовое поле (14 знаков), обязательное для заполнения
     phone_number = models.CharField(max_length=14, verbose_name='Номер телефона')
     # Электронная почта: текстовое поле (254 знаков), обязательное для заполнения
@@ -112,7 +69,7 @@ class BookingNoAccount(models.Model):
     # Рейс: текстовое поле (200 знаков), обязательное для заполнения
     flight = models.CharField(max_length=200, verbose_name='Рейс')
     # Дата бронирования: дата и время выбирает пользователь, обязательное для заполнения
-    booking_date = models.DateField(verbose_name='Дата бронирования')
+    booking_date = models.DateTimeField(verbose_name='Дата бронирования')
     # Количество пассажиров: числовое (целое) поле, обязательное для заполнения
     number_of_passengers = models.IntegerField(verbose_name='Количество пассажиров')
     # Услуга: связь многие к многим с таблицей Услуга, обязательное для заполнения

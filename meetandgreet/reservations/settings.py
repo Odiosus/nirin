@@ -311,7 +311,7 @@ JAZZMIN_SETTINGS = {
     # - вертикальные_табы
     # - складной
     # - карусель
-    "changeform_format": "horizontal_tabs",
+    "changeform_format": "collapsible",
     # # переопределить формы изменений для каждого администратора модели
     # "changeform_format_overrides": {"auth.user": "collapsible", "auth.group": "vertical_tabs"},
     # # Добавляем раскрывающийся список языков в админку
@@ -321,25 +321,22 @@ JAZZMIN_SETTINGS = {
 """
 Настройки библиотеки Jazzmin. Выбор темы. Пока подключена тема для. Дальше сделаем свой CSS под цветовую гамму сайта
 """
-# JAZZMIN_UI_TWEAKS = {
-#     "theme": "simplex",
-# }
 
 JAZZMIN_UI_TWEAKS = {
-    "navbar_small_text": True,
-    "footer_small_text": True,
-    "body_small_text": False,
+    "navbar_small_text": False,
+    "footer_small_text": False,
+    "body_small_text": True,
     "brand_small_text": False,
-    "brand_colour": "navbar-cyan",
-    "accent": "accent-lightblue",
-    "navbar": "navbar-info navbar-dark",
+    "brand_colour": "navbar-lightblue",
+    "accent": "accent-navy",
+    "navbar": "navbar-lightblue navbar-dark",
     "no_navbar_border": False,
-    "navbar_fixed": False,
+    "navbar_fixed": True,
     "layout_boxed": False,
     "footer_fixed": False,
     "sidebar_fixed": False,
-    "sidebar": "sidebar-light-info",
-    "sidebar_nav_small_text": True,
+    "sidebar": "sidebar-light-lightblue",
+    "sidebar_nav_small_text": False,
     "sidebar_disable_expand": False,
     "sidebar_nav_child_indent": False,
     "sidebar_nav_compact_style": True,
@@ -355,5 +352,5 @@ JAZZMIN_UI_TWEAKS = {
         "danger": "btn-danger",
         "success": "btn-success"
     },
-    "actions_sticky_top": False
+    "actions_sticky_top": True
 }
