@@ -2,7 +2,7 @@ from rest_framework import serializers
 from .models import BookingNoAccount, SearchAirport, Service
 
 
-class ServiceSerializer(serializers.ModelSerializer):
+class ServiceSerializer(serializers.HyperlinkedModelSerializer):
     """Сериализация списка всех услуг"""
 
     class Meta:
@@ -10,7 +10,7 @@ class ServiceSerializer(serializers.ModelSerializer):
         fields = ('name', 'desc', 'price')  # явно прописываем поля, которые хотим сериализовать
 
 
-class SearchAirportSerializer(serializers.ModelSerializer):
+class SearchAirportSerializer(serializers.HyperlinkedModelSerializer):
     """Сериализация списка всех аэропортов"""
     service = ServiceSerializer(read_only=True, many=True)
 
@@ -19,7 +19,7 @@ class SearchAirportSerializer(serializers.ModelSerializer):
         exclude = ("time_add", "time_update")  # все поля, кроме этих
 
 
-class BookingSerializer(serializers.ModelSerializer):
+class BookingSerializer(serializers.HyperlinkedModelSerializer):
     """Сериализация списка всех бронирований"""
     # сериализуем модель SearchAirport
     airport = serializers.PrimaryKeyRelatedField(queryset=SearchAirport.objects.all(), many=True)
