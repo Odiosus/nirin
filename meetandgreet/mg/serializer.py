@@ -1,39 +1,56 @@
 from rest_framework import serializers
 from .models import (
-    BookingNoAccount, SearchAirport, Service
+    BookingNoAccount, SearchAirport, Service, FastBooking
 )
 import json
 
 
-class ServiceSerializer(serializers.ModelSerializer):
-    """Сериализация списка всех услуг"""
-
-    class Meta:
-        model = Service  # указываем модель, которую хотим сериализовать
-        fields = ('name', 'desc', 'price')  # явно прописываем поля, которые хотим сериализовать
-
-    # def create(self, validated_data):
-    #     return super().create(self.name)
-
-
 class SearchAirportSerializer(serializers.ModelSerializer):
-    """Сериализация списка всех аэропортов"""
-    service = ServiceSerializer(read_only=True, many=True)
-
+    """
+    Сериализатор для модели SearchAirport. Используется для представления данных об аэропортах.
+    """
     class Meta:
-        model = SearchAirport  # сериализуем модель SearchAirport
-        exclude = ("time_add", "time_update")  # все поля, кроме этих
+        model = SearchAirport
+        fields = '__all__'
 
-    # def create(self, validated_data):
-    #     return super().create(self.name)
+
+class ServiceSerializer(serializers.ModelSerializer):
+    """
+    Сериализатор для модели Service. Используется для представления данных об услугах.
+    """
+    class Meta:
+        model = Service
+        fields = '__all__'
 
 
 class BookingSerializer(serializers.ModelSerializer):
+    """
+    Сериализатор для модели BookingNoAccount. Включает поля для аэропортов и услуг как списки строк.
+    """
+    airport = serializers.ListField(
+        child=serializers.CharField(max_length=200),
+        write_only=True
+    )
+    service = serializers.ListField(
+        child=serializers.CharField(max_length=200),
+        write_only=True
+    )
+    airport_list = SearchAirportSerializer(many=True, read_only=True, source='airport')
+    service_list = ServiceSerializer(many=True, read_only=True, source='service')
+
+    class Meta:
+        model = BookingNoAccount
+        fields = ('customername', 'phone_number', 'email', 'airport', 'flight', 'booking_date',
+                  'numberofpassengers', 'service', 'note', 'airport_list', 'service_list')
+        depth = 1
+
+
+class FastBookingSerializer(serializers.ModelSerializer):
+    """Сериализация списка всех бронирований быстрой заявки"""
     airport_list = SearchAirportSerializer(many=True, read_only=True)
     service_list = ServiceSerializer(many=True, read_only=True)
 
     class Meta:
-        model = BookingNoAccount
-        fields = ('customername', 'phone_number', 'email', 'airport_list', 'flight', 'booking_date',
-                  'numberofpassengers', 'service_list', 'note')
+        model = FastBooking
+        fields = ('customername', 'phone_number', 'email', 'airport_list', 'flight', 'booking_date', 'service_list')
         depth = 1
