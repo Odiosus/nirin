@@ -39,7 +39,7 @@ class SearchAirportAdmin(admin.ModelAdmin):
     Зарегал модель в админке. Нужно доделать (см. связи м2м❗️). Добавить филдсеты для эффектности.
     Протестить в связке с jazzmin
     """
-    list_display = ('airport_name', 'iata', 'country', 'city',)  # FIXME 'service' не выводится из-за связи м2м.
+    list_display = ('airport_name', 'iata', 'country', 'city', 'service_list')
     list_filter = ('airport_name', 'iata', 'country', 'city', 'time_add', 'time_update')
     search_fields = ('airport_name', 'iata', 'country', 'city')
     list_display_links = ('airport_name', 'iata', 'country', 'city')
@@ -54,34 +54,61 @@ class SearchAirportAdmin(admin.ModelAdmin):
             'fields': ('service',)
         }),
         ('Время добавления и обновления записи', {
+            "description": "Этот раздел заполняется автоматически",
             'fields': ('time_add', 'time_update')
         }),
     )
 
+    def service_list(self, obj):
+        """Услуги для админки, указываем через запятую"""
+        return ", ".join([s.name for s in obj.service.all()])
+
+    service_list.short_description = 'Услуги'
+
     @admin.register(BookingNoAccount)
     class BookingNoAccountAdmin(admin.ModelAdmin):
         list_display = (
-        'customer_name', 'phone_number', 'email', 'flight', 'booking_date', 'number_of_passengers', 'note')
+            'customer_name', 'phone_number', 'email', 'flight', 'booking_date', 'number_of_passengers', 'note',
+            'service_list', 'airport_list',)
         list_filter = ('airport', 'flight', 'booking_date')
         search_fields = ('customer_name', 'service__name', 'phone_number', 'email')
         list_display_links = ('customer_name',)
-        ordering = ['-booking_date']
+        ordering = ['booking_date']
         readonly_fields = ('time_add', 'time_update')
         list_per_page = 10
 
         fieldsets = (
             ('Информация о бронировании', {
-                'fields': ('customer_name', 'phone_number', 'email', 'flight', 'booking_date', 'number_of_passengers')
+                'fields': (
+                    'customer_name', 'phone_number', 'email', 'flight', 'booking_date',
+                    'number_of_passengers')
+            }),
+            ('Выбор услуг и аэропортов', {
+                'fields': ('service', 'airport')
             }),
             ('Примечания', {
+                "description": "Указать примечание: терминал прибытия, особенности сопровождения и пр. (необязательно)",
                 'fields': ('note',)
             }),
             ('Время добавления и обновления записи', {
+                "description": "Этот раздел заполняется автоматически",
                 'fields': ('time_add', 'time_update')
             }),
         )
 
         filter_horizontal = ('airport', 'service')
+
+        def service_list(self, obj):
+            """Услуги для админки, указываем через запятую"""
+            return ", ".join([s.name for s in obj.service.all()])
+
+        service_list.short_description = 'Услуги'
+
+        def airport_list(self, obj):
+            """Аэропорты для админки, указываем через запятую"""
+            return ", ".join([s.airport_name for s in obj.airport.all()])
+
+        airport_list.short_description = 'Аэропорты'
 
     # TODO: добавить функцию для отображения краткого описания примечания в админке
     # def short_note_block_description_field(self, obj):

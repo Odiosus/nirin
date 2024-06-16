@@ -38,7 +38,7 @@ class SearchAirport(models.Model):
     # # ❗️терминал: связь многие к многим
     # terminals = models.ManyToManyField(Terminal, verbose_name='Терминал')
     # услуга: связь многие к многим
-    service = models.ManyToManyField(Service, verbose_name='Услуга')
+    service = models.ManyToManyField(Service, verbose_name='Услуга', related_name='services')
     # время создания записи: дата и время добавляются автоматически при создании записи
     time_add = models.DateTimeField(auto_now_add=True, verbose_name='Время добавления')
     # время изменения записи: дата и время изменяются автоматически при изменении записи
@@ -59,7 +59,7 @@ class BookingNoAccount(models.Model):
     услуга, примечание, время создания/изменения записи о бронировании без аккаунта.
     """
     # Имя: текстовое поле (200 знаков), обязательное для заполнения
-    customer_name = models.CharField(max_length=200, verbose_name='Имя')
+    customer_name = models.CharField(max_length=200, verbose_name='Имя клиента')
     # Номер телефона: текстовое поле (14 знаков), обязательное для заполнения
     phone_number = models.CharField(max_length=14, verbose_name='Номер телефона')
     # Электронная почта: текстовое поле (254 знаков), обязательное для заполнения
@@ -69,7 +69,7 @@ class BookingNoAccount(models.Model):
     # Рейс: текстовое поле (200 знаков), обязательное для заполнения
     flight = models.CharField(max_length=200, verbose_name='Рейс')
     # Дата бронирования: дата и время выбирает пользователь, обязательное для заполнения
-    booking_date = models.DateField(verbose_name='Дата бронирования')
+    booking_date = models.DateTimeField(verbose_name='Дата бронирования')
     # Количество пассажиров: числовое (целое) поле, обязательное для заполнения
     number_of_passengers = models.IntegerField(verbose_name='Количество пассажиров')
     # Услуга: связь многие к многим с таблицей Услуга, обязательное для заполнения
