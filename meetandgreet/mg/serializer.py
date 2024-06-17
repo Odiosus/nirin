@@ -32,12 +32,10 @@ class BookingSerializer(serializers.HyperlinkedModelSerializer):
                   'number_of_passengers', 'service', 'note')  # явно прописываем поля, которые хотим сериализовать
 
 
-class FastBookingSerializer(serializers.ModelSerializer):
-    """Сериализация списка всех бронирований быстрой заявки"""
-    airport_list = SearchAirportSerializer(many=True, read_only=True)
-    service_list = ServiceSerializer(many=True, read_only=True)
+class FastBookingSerializer(serializers.HyperlinkedModelSerializer):
+    """Сериализация списка быстрого бронирования"""
 
     class Meta:
-        model = FastBooking
-        fields = ('customername', 'phone_number', 'email', 'airport_list', 'flight', 'booking_date', 'service_list')
-        depth = 1
+        model = BookingNoAccount  # сериализуем модель BookingNoAccount
+        fields = ('customer_name', 'phone_number', 'email', 'flight', 'booking_date',
+                  'number_of_passengers', 'note')  # явно прописываем поля, которые хотим сериализовать
