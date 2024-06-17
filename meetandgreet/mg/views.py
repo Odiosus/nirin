@@ -1,7 +1,7 @@
 from rest_framework import viewsets, filters
 from django_filters.rest_framework import DjangoFilterBackend
 from .models import BookingNoAccount, SearchAirport, Service
-from .serializer import BookingSerializer, SearchAirportSerializer, ServiceSerializer
+from .serializer import BookingSerializer, SearchAirportSerializer, ServiceSerializer, FastBookingSerializer
 from rest_framework.response import Response
 from rest_framework.generics import ListAPIView, CreateAPIView, RetrieveAPIView
 
@@ -61,3 +61,33 @@ class BookingCreateApiView(CreateAPIView):
 
         booking.airport.set(data['airport'])
         booking.service.set(data['service'])
+
+
+class FastBookingCreateApiView(CreateAPIView):
+    """Вывод создание новой быстрой заявки"""
+    serializer_class = FastBookingSerializer  # сериализуем данные
+    queryset = BookingNoAccount.objects.all()  # выбираем все записи быстрой заявки
+
+    def create(self, request, *args, **kwargs):
+        """Функция создания новой быстрой заявки"""
+        response = {}
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        headers = self.get_success_headers(serializer.data)
+        response['data'] = serializer.data
+        response['response'] = "OK"
+
+        data = request.data
+
+        new_res = BookingNoAccount.objects.create(
+            customer_name=data.get("customer_name"),
+            phone_number=data.get("phone_number"),
+            email=data.get("email"),
+            flight=data.get("flight"),
+            booking_date=data.get("booking_date"),
+            number_of_passengers=data['number_of_passengers'],
+        )
+
+        serializer = FastBookingSerializer(new_res)
+
+        return Response(serializer.data)
