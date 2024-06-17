@@ -1,9 +1,11 @@
+import os
 from rest_framework import viewsets, filters
 from django_filters.rest_framework import DjangoFilterBackend
 from .models import BookingNoAccount, SearchAirport, Service
 from .serializer import BookingSerializer, SearchAirportSerializer, ServiceSerializer, FastBookingSerializer
 from rest_framework.response import Response
 from rest_framework.generics import ListAPIView, CreateAPIView, RetrieveAPIView
+from django.core.mail import send_mail
 
 
 class ServiceListView(ListAPIView):
@@ -31,6 +33,21 @@ class SearchAirportViewSet(viewsets.ModelViewSet):
     filter_backends = [DjangoFilterBackend, filters.SearchFilter]  # настройка фильтрации
     filterset_fields = ['country', 'city']  # указываем поля, по которым можно фильтровать TODO нужна ли фильтрация?
     search_fields = ['airport_name', 'iata', 'country', 'city']  # указываем поля, по которым можно искать
+
+
+def send_email_notification(booking):
+    """Отправка на почту уведомления о создании новой заявки"""
+    subject = 'Поступила новая заявка'
+    message = f'Поступила новая заявка.\n\nДетали:\n' \
+              f'Имя клиента: {booking.customer_name}\n' \
+              f'Номер телефона: {booking.phone_number}\n' \
+              f'E-mail: {booking.email}\n' \
+              f'Рейс: {booking.flight}\n' \
+              f'Дата: {booking.booking_date}\n' \
+              f'Количество пассажиров: {booking.number_of_passengers}\n' \
+              f'Примечание: {booking.note}\n'
+    recipient_list = [booking.email]
+    send_mail(subject, message, os.getenv('SERVER_EMAIL'), recipient_list)
 
 
 class BookingCreateApiView(CreateAPIView):
@@ -61,6 +78,9 @@ class BookingCreateApiView(CreateAPIView):
 
         booking.airport.set(data['airport'])
         booking.service.set(data['service'])
+
+        # Отправка уведомления на почту
+        send_email_notification(booking)
 
 
 class FastBookingCreateApiView(CreateAPIView):
