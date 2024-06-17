@@ -15,8 +15,10 @@ class SearchAirportSerializer(serializers.HyperlinkedModelSerializer):
     service = ServiceSerializer(read_only=True, many=True)
 
     class Meta:
-        model = SearchAirport  # сериализуем модель SearchAirport
-        exclude = ("time_add", "time_update")  # все поля, кроме этих
+        # сериализуем модель SearchAirport
+        model = SearchAirport
+        # явно прописываем поля, которые хотим сериализовать
+        fields = ('airport_name', 'iata', 'country', 'city', 'service')
 
 
 class BookingSerializer(serializers.HyperlinkedModelSerializer):
