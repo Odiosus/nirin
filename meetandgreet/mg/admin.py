@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import SearchAirport, Service, BookingNoAccount
+from .models import SearchAirport, Service, BookingNoAccount, FastBooking
 
 
 @admin.register(Service)
@@ -110,6 +110,24 @@ class SearchAirportAdmin(admin.ModelAdmin):
 
         airport_list.short_description = 'Аэропорты'
 
+    @admin.register(FastBooking)
+    class FastBookingAdmin(admin.ModelAdmin):
+        list_display = ('customername', 'phone_number', 'email', 'flight', 'booking_date',)
+        list_filter = ('airport', 'flight', 'booking_date',)
+        search_fields = ('customername', 'phone_number', 'email',)
+        list_display_links = ('customername',)
+        ordering = ['-booking_date']
+        readonly_fields = ('time_add', 'time_update',)
+        list_per_page = 10
+        filter_horizontal = ('airport', 'service',)
+        fieldsets = (
+            ('Информация о бронировании', {
+                'fields': ('customername', 'phone_number', 'email', 'flight', 'booking_date', 'airport', 'service')
+            }),
+            ('Время добавления и обновления записи', {
+                'fields': ('time_add', 'time_update')
+            }),
+        )
     # TODO: добавить функцию для отображения краткого описания примечания в админке
     # def short_note_block_description_field(self, obj):
     #     """

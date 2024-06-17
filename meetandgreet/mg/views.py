@@ -61,3 +61,42 @@ class BookingCreateApiView(CreateAPIView):
 
         booking.airport.set(data['airport'])
         booking.service.set(data['service'])
+
+
+class FastBookingCreateApiView(CreateAPIView):
+    """Вывод создание новой быстрой заявки"""
+    serializer_class = FastBookingSerializer  # сериализуем данные
+    queryset = FastBooking.objects.all()  # выбираем все записи быстрой заявки
+
+    def create(self, request, *args, **kwargs):
+        """Функция создания новой быстрой заявки"""
+        response = {}
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        headers = self.get_success_headers(serializer.data)
+        response['data'] = serializer.data
+        response['response'] = "OK"
+
+        data = request.data
+
+        new_res = FastBooking.objects.create(
+            customername=data.get("customername"),
+            phone_number=data.get("phone_number"),
+            email=data.get("email"),
+            flight=data.get("flight"),
+            booking_date=data.get("booking_date"),
+        )
+
+        if 'airport' in request.data:
+            for airport in request.data['airport']:
+                airport_obj = SearchAirport.objects.get(airport_name=airport['airport_name'])
+                new_res.airport.add(airport_obj)
+
+        if 'service' in request.data:
+            for service in request.data['service']:
+                service_obj = Service.objects.get(name=service['name'])
+                new_res.service.add(service_obj)
+
+        serializer = FastBookingSerializer(new_res)
+
+        return Response(serializer.data)

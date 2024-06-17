@@ -87,3 +87,35 @@ class BookingNoAccount(models.Model):
     class Meta:
         verbose_name = 'Бронирование без аккаунта'
         verbose_name_plural = 'Бронирования без аккаунта'
+
+
+class FastBooking(models.Model):
+    """
+    Модель таблицы Быстрое бронирование, где хранятся данные о быстрых бронированиях.
+    Поля: имя, номер телефона, электронная почта, аэропорт, рейс, дата бронирования, услуга, время создания/изменения записи о быстром бронировании.
+    """
+    # имя: текстовое поле (200 знаков), обязательное для заполнения
+    customername = models.CharField(max_length=200, verbose_name='Имя')
+    # номер телефона: текстовое поле (14 знаков), обязательное для заполнения
+    phone_number = models.CharField(max_length=14, verbose_name='Номер телефона')
+    # электронная почта: текстовое поле (254 знаков), обязательное для заполнения
+    email = models.EmailField(verbose_name='Электронная почта')
+    # рейс: текстовое поле (200 знаков), обязательное для заполнения
+    flight = models.CharField(max_length=200, verbose_name='Рейс')
+    # дата бронирования: дата и время выбирает пользователь, обязательное для заполнения
+    booking_date = models.DateField(verbose_name='Дата бронирования')
+    # аэропорт: связь многие к многим с таблицей Аэропорт, обязательное для заполнения
+    airport = models.ManyToManyField(SearchAirport, verbose_name='Аэропорт')
+    # услуга: связь многие к многим с таблицей Услуга, обязательное для заполнения
+    service = models.ManyToManyField(Service, verbose_name='Услуга')
+    # время создания записи: дата и время добавляются автоматически при создании записи
+    time_add = models.DateTimeField(auto_now_add=True, verbose_name='Время добавления')
+    # время изменения записи: дата и время изменяются автоматически при изменении записи
+    time_update = models.DateTimeField(auto_now=True, verbose_name='Время изменения')
+
+    def __str__(self):
+        return self.customername
+
+    class Meta:
+        verbose_name = 'Быстрое бронирование'
+        verbose_name_plural = 'Быстрые бронирования'
