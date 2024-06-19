@@ -3,6 +3,7 @@ import styles from "./Header.module.css";
 import Video from "./video/Video";
 import Navigation from "./Navigation/Navigation";
 import Title from "./Title/Title";
+import Test from "./Test/Test";
 // import departure_icon from "../../assets/airplane-came.png";
 // import transit_icon from "../../assets/plane_away_and_came.png";
 // import arrival_icon from "../../assets/plane_arrived.png";
@@ -28,7 +29,9 @@ export default function Header() {
               <span className={styles.header__span}>around</span> the world
             </Title>
           </div>
-          <div className={styles.header__custom_select_countries}></div>
+          <div className={styles.header__custom_select_countries}>
+            <Test />
+          </div>
         </div>
       </div>
     </>
