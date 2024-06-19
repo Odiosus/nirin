@@ -1,0 +1,8 @@
+.btn {
+  border: solid 1px #2a3659;
+  border-radius: 38px;
+  background-color: transparent;
+  width: clamp(3.75rem, 2.114rem + 8.18vw, 8.25rem);
+  height: clamp(2.625rem, 1.926rem + 1.16vw, 3.313rem);
+  cursor: pointer;
+}

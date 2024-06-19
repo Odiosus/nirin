@@ -1,0 +1,85 @@
+@font-face {
+  font-family: "Manrope-Regular";
+  src: url("../../../fonts/ManRope/Manrope-Regular.woff2") format("woff2");
+  font-style: normal;
+  font-weight: normal;
+}
+@font-face {
+  font-family: "PlayfairDisplay-Italic";
+  src: url("../../../fonts/PlayfairDisplay/PlayfairDisplay-Italic.woff2")
+    format("woff2");
+  font-style: normal;
+  font-weight: normal;
+}
+
+.section {
+  font-family: "Manrope-Regular", sans-serif;
+  width: 100%;
+  margin-top: 2px;
+  background-color: #fff;
+}
+.section__title {
+  color: #2a3659;
+  font-size: clamp(2.625rem, 2.117rem + 0.84vw, 3.125rem);
+  line-height: clamp(3.5rem, 2.61rem + 1.47vw, 4.375rem);
+  text-transform: uppercase;
+  text-align: center;
+  margin-top: clamp(7.5rem, 6.42rem + 1.79vw, 8.563rem);
+}
+.section__container {
+  position: relative;
+  padding: clamp(5rem, 3.793rem + 2vw, 6.188rem);
+  min-height: 85vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+}
+.section__search {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: clamp(47rem, 30.488rem + 7.46vw, 46.438rem);
+  height: clamp(2.625rem, 1.926rem + 1.16vw, 3.313rem);
+  text-align: left;
+  border: #2a3659 1px solid;
+  padding: 8px 14px;
+  border-radius: 44px;
+}
+.section__search_icon {
+  cursor: pointer;
+}
+.section__input {
+  top: clamp(2.188rem, 1.234rem + 1.58vw, 3.125rem);
+  z-index: 5;
+  background-color: #fff;
+  width: 90%;
+  margin-left: clamp(0.625rem, 0.307rem + 0.53vw, 0.938rem);
+}
+.section__input:focus {
+  outline: none;
+}
+.section__search_wrapper {
+  display: flex;
+  gap: 7px;
+  cursor: pointer;
+  align-items: center;
+  z-index: 5;
+}
+
+.section__title_bottom {
+  display: flex;
+  align-items: center;
+  gap: clamp(0.438rem, -0.313rem + 1.25vw, 0.625rem);
+  z-index: 5;
+}
+.section__button {
+  padding: 14px 28px;
+  background-color: transparent;
+  color: #2a3659;
+  border: solid 1px #2a3659;
+  border-radius: 38px;
+  text-transform: uppercase;
+  font-size: clamp(1rem, 0.5rem + 0.83vw, 1.125rem);
+  cursor: pointer;
+}
