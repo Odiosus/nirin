@@ -1,0 +1,20 @@
+@import url("./zero_styles.css");
+@font-face {
+  font-family: "Manrope-Regular";
+  src: url("./fonts/ManRope/Manrope-Regular.woff2") format("woff2");
+  font-style: normal;
+  font-weight: normal;
+}
+.App {
+  font-family: "Manrope-Regular", serif;
+  font-weight: 400;
+  /* grid header 100vh main footer */
+  height: 100vh;
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "header"
+    "main"
+    "footer";
+}
