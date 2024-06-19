@@ -87,3 +87,31 @@ class BookingNoAccount(models.Model):
     class Meta:
         verbose_name = 'Бронирование без аккаунта'
         verbose_name_plural = 'Бронирования без аккаунта'
+
+
+class Feedback(models.Model):
+    """
+    Модель таблицы Обратная связь, где хранятся данные о поступившем от пользователей обратной связи,
+    а также результате обработки и времени создания/изменения записи обратной связи.
+    """
+    # Имя: текстовое поле (200 знаков), обязательное для заполнения
+    name = models.CharField(max_length=200, verbose_name='Имя')
+    # Номер телефона: текстовое поле (14 знаков), обязательное для заполнения
+    phone_number = models.CharField(max_length=14, verbose_name='Номер телефона')
+    # Электронная почта: текстовое поле (254 знака), обязательное для заполнения
+    email = models.EmailField(verbose_name='Электронная почта')
+    # Сообщение: текстовое поле (500 знаков), обязательное для заполнения
+    message = models.TextField(verbose_name='Сообщение')
+    # Результат: текстовое поле (500 знаков), необязательное для заполнения, по умолч. None
+    result = models.TextField(null=True, blank=True, default=None, verbose_name='Результат')
+    # Время создания записи: дата и время добавляются автоматически при создании записи
+    time_add = models.DateTimeField(auto_now_add=True, verbose_name='Время добавления')
+    # Время изменения записи: дата и время изменяются автоматически при изменении записи
+    time_update = models.DateTimeField(auto_now=True, verbose_name='Время изменения')
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'Обратная связь'
+        verbose_name_plural = 'Обратная связь'
