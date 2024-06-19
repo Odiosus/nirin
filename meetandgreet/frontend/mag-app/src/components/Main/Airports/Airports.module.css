@@ -1,0 +1,10 @@
+.airports {
+  width: 100%;
+  padding-inline: clamp(0.938rem, 0.188rem + 1.25vw, 1.125rem);
+}
+.airports__wrapper {
+  display: flex;
+  align-items: center;
+  gap: clamp(1rem, 1.67vw, 1.25rem);
+  margin-block: clamp(5.625rem, -1.875rem + 12.5vw, 7.5rem);
+}
