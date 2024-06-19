@@ -1,0 +1,6 @@
+.title {
+  font-size: clamp(2.625rem, 1.862rem + 1.26vw, 3.375rem);
+  line-height: clamp(4.063rem, 3.745rem + 0.53vw, 4.375rem);
+  text-transform: uppercase;
+  color: #2a3659;
+}
