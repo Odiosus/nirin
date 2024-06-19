@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import BookingNoAccount, SearchAirport, Service
+from .models import BookingNoAccount, SearchAirport, Service, Feedback
 
 
 class ServiceSerializer(serializers.HyperlinkedModelSerializer):
@@ -41,3 +41,13 @@ class FastBookingSerializer(serializers.HyperlinkedModelSerializer):
         model = BookingNoAccount  # сериализуем модель BookingNoAccount
         fields = ('customer_name', 'phone_number', 'email', 'flight', 'booking_date',
                   'number_of_passengers', 'note')  # явно прописываем поля, которые хотим сериализовать
+
+
+class FeedbackSerializer(serializers.HyperlinkedModelSerializer):
+    """Сериализация обратной связи"""
+
+    class Meta:
+        # сериализуем модель Feedback
+        model = Feedback
+        # явно прописываем поля, которые хотим сериализовать
+        fields = ('name', 'phone_number', 'email', 'message')

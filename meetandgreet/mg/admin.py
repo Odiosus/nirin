@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import SearchAirport, Service, BookingNoAccount
+from .models import SearchAirport, Service, BookingNoAccount, Feedback
 
 
 @admin.register(Service)
@@ -120,3 +120,31 @@ class SearchAirportAdmin(admin.ModelAdmin):
     #             obj.note_block_description_field) > 100 else obj.note_block_description_field
     #
     # short_note_block_description_field.short_description = 'Краткое описание'
+
+
+@admin.register(Feedback)
+class FeedbackAdmin(admin.ModelAdmin):
+    """
+    Админка обратной связи
+    """
+    # поля, которые будут отображаться в админке
+    list_display = ('name', 'phone_number', 'email', 'message', 'result', 'time_add', 'time_update')
+    # поля, по которым будет производиться фильтрация
+    list_filter = ('time_add', 'time_update')
+    # поля, по которым будет производиться поиск
+    search_fields = ('name', 'phone_number', 'email', 'message')
+    # поля, которые используются в качестве ссылок для перехода в конкретную запись
+    list_display_links = ('name', 'phone_number',)
+    # сортировка: по дате добавления (от последней к первой)
+    ordering = ['-time_add']
+    # поля, которые нельзя редактировать в админке
+    readonly_fields = ('name', 'phone_number', 'email', 'message', 'time_add', 'time_update',)
+    # количество записей на странице (пагинация)
+    list_per_page = 10
+    # полей в админке (конкретная запись)
+    fieldsets = (
+        ('Обратная связь', {
+            'fields': (
+                'name', 'phone_number', 'email', 'message', 'result', 'time_add', 'time_update')
+        }),
+    )

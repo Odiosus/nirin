@@ -1,8 +1,11 @@
 import os
+
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 from rest_framework import viewsets, filters
 from django_filters.rest_framework import DjangoFilterBackend
-from .models import BookingNoAccount, SearchAirport, Service
-from .serializer import BookingSerializer, SearchAirportSerializer, ServiceSerializer, FastBookingSerializer
+from .models import BookingNoAccount, SearchAirport, Service, Feedback
+from .serializer import BookingSerializer, SearchAirportSerializer, ServiceSerializer, FastBookingSerializer, FeedbackSerializer
 from rest_framework.response import Response
 from rest_framework.generics import ListAPIView, CreateAPIView, RetrieveAPIView
 from django.core.mail import send_mail
@@ -111,3 +114,18 @@ class FastBookingCreateApiView(CreateAPIView):
         serializer = FastBookingSerializer(new_res)
 
         return Response(serializer.data)
+
+
+class FeedbackCreateApiView(CreateAPIView):
+    """Вывод создание обратной связи"""
+    serializer_class = FeedbackSerializer
+    queryset = Feedback.objects.all()
+
+    @receiver(post_save, sender=Feedback)
+    def send_feedback_notification(sender, instance, created, **kwargs):
+        if created:
+            subject = 'Новое сообщение обратной связи'
+            message = f'Вы получили новое сообщение от {instance.name}. Текст сообщения: {instance.message}.'
+            from_email = os.getenv('SERVER_EMAIL')
+            recipient_list = ['suchkovmaks@gmail.com']
+            send_mail(subject, message, from_email, recipient_list)
