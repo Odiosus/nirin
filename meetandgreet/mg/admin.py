@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import SearchAirport, Service, BookingNoAccount
+from .models import SearchAirport, Service, BookingNoAccount, Feedback
 
 
 @admin.register(Service)
@@ -65,50 +65,51 @@ class SearchAirportAdmin(admin.ModelAdmin):
 
     service_list.short_description = 'Услуги'
 
-    @admin.register(BookingNoAccount)
-    class BookingNoAccountAdmin(admin.ModelAdmin):
-        list_display = (
-            'customer_name', 'phone_number', 'email', 'flight', 'booking_date', 'number_of_passengers', 'note',
-            'service_list', 'airport_list',)
-        list_filter = ('airport', 'flight', 'booking_date')
-        search_fields = ('customer_name', 'service__name', 'phone_number', 'email')
-        list_display_links = ('customer_name',)
-        ordering = ['booking_date']
-        readonly_fields = ('time_add', 'time_update')
-        list_per_page = 10
 
-        fieldsets = (
-            ('Информация о бронировании', {
-                'fields': (
-                    'customer_name', 'phone_number', 'email', 'flight', 'booking_date',
-                    'number_of_passengers')
-            }),
-            ('Выбор услуг и аэропортов', {
-                'fields': ('service', 'airport')
-            }),
-            ('Примечания', {
-                "description": "Указать примечание: терминал прибытия, особенности сопровождения и пр. (необязательно)",
-                'fields': ('note',)
-            }),
-            ('Время добавления и обновления записи', {
-                "description": "Этот раздел заполняется автоматически",
-                'fields': ('time_add', 'time_update')
-            }),
-        )
+@admin.register(BookingNoAccount)
+class BookingNoAccountAdmin(admin.ModelAdmin):
+    list_display = (
+        'customer_name', 'phone_number', 'email', 'flight', 'booking_date', 'number_of_passengers', 'note',
+        'service_list', 'airport_list',)
+    list_filter = ('airport', 'flight', 'booking_date')
+    search_fields = ('customer_name', 'service__name', 'phone_number', 'email')
+    list_display_links = ('customer_name',)
+    ordering = ['booking_date']
+    readonly_fields = ('time_add', 'time_update')
+    list_per_page = 10
 
-        filter_horizontal = ('airport', 'service')
+    fieldsets = (
+        ('Информация о бронировании', {
+            'fields': (
+                'customer_name', 'phone_number', 'email', 'flight', 'booking_date',
+                'number_of_passengers')
+        }),
+        ('Выбор услуг и аэропортов', {
+            'fields': ('service', 'airport')
+        }),
+        ('Примечания', {
+            "description": "Указать примечание: терминал прибытия, особенности сопровождения и пр. (необязательно)",
+            'fields': ('note',)
+        }),
+        ('Время добавления и обновления записи', {
+            "description": "Этот раздел заполняется автоматически",
+            'fields': ('time_add', 'time_update')
+        }),
+    )
 
-        def service_list(self, obj):
-            """Услуги для админки, указываем через запятую"""
-            return ", ".join([s.name for s in obj.service.all()])
+    filter_horizontal = ('airport', 'service')
 
-        service_list.short_description = 'Услуги'
+    def service_list(self, obj):
+        """Услуги для админки, указываем через запятую"""
+        return ", ".join([s.name for s in obj.service.all()])
 
-        def airport_list(self, obj):
-            """Аэропорты для админки, указываем через запятую"""
-            return ", ".join([s.airport_name for s in obj.airport.all()])
+    service_list.short_description = 'Услуги'
 
-        airport_list.short_description = 'Аэропорты'
+    def airport_list(self, obj):
+        """Аэропорты для админки, указываем через запятую"""
+        return ", ".join([s.airport_name for s in obj.airport.all()])
+
+    airport_list.short_description = 'Аэропорты'
 
     # TODO: добавить функцию для отображения краткого описания примечания в админке
     # def short_note_block_description_field(self, obj):
@@ -120,3 +121,20 @@ class SearchAirportAdmin(admin.ModelAdmin):
     #             obj.note_block_description_field) > 100 else obj.note_block_description_field
     #
     # short_note_block_description_field.short_description = 'Краткое описание'
+
+
+@admin.register(Feedback)
+class FeedbackAdmin(admin.ModelAdmin):
+    list_display = ('name', 'phone_number', 'email', 'message', 'result', 'time_add', 'time_update')
+    list_filter = ('time_add', 'time_update')
+    search_fields = ('name', 'phone_number', 'email', 'message')
+    list_display_links = ('name', 'phone_number',)
+    ordering = ['-time_add']
+    readonly_fields = ('name', 'phone_number', 'email', 'message', 'time_add', 'time_update',)
+    list_per_page = 10
+    fieldsets = (
+        ('Обратная связь', {
+            'fields': (
+                'name', 'phone_number', 'email', 'message', 'result', 'time_add', 'time_update')
+        }),
+    )
