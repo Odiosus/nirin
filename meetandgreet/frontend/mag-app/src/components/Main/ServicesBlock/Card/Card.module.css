@@ -1,0 +1,26 @@
+.card {
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
+  transition: all 0.8s;
+  position: relative;
+  text-align: left;
+}
+.card__bgr {
+  background-image: url("../../../../assets/Hotels.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100%;
+  width: 100%;
+}
+.card__title_box {
+  position: absolute;
+  bottom: clamp(2.813rem, -0.688rem + 5.83vw, 3.688rem);
+  left: clamp(2.5rem, 4.17vw, 3.125rem);
+  color: #fff;
+  font-size: clamp(3.25rem, 0.25rem + 5vw, 4rem);
+  line-height: clamp(4.5rem, 2.5rem + 3.33vw, 5rem);
+  font-weight: 400;
+  min-height: clamp(9.375rem, 2.375rem + 11.67vw, 11.125rem);
+}
