@@ -1,0 +1,19 @@
+.card {
+  height: clamp(36.263rem, 27.358rem + 14.84vw, 38.489rem);
+  width: clamp(11.831rem, 7.196rem + 7.72vw, 12.99rem);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 30.79px;
+  cursor: pointer;
+  transition: all 0.8s;
+}
+.card:hover {
+  width: clamp(30rem, 10rem + 33.33vw, 35rem);
+}
+
+@media (max-width: 960px) {
+  .card {
+    width: 28%;
+  }
+}

@@ -1,0 +1,40 @@
+@font-face {
+  font-family: "PlayfairDisplay-Italic";
+  src: url("../../../fonts/PlayfairDisplay/PlayfairDisplay-Italic.woff2")
+    format("woff2");
+  font-style: normal;
+  font-weight: normal;
+}
+@font-face {
+  font-family: "Manrope-Regular";
+  src: url("../../../fonts/ManRope/Manrope-Regular.woff2") format("woff2");
+  font-style: normal;
+  font-weight: normal;
+}
+.moreServices {
+  font-family: "Manrope-Regular", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.moreServices__cards_wrapper {
+  margin-top: clamp(8.75rem, -4.5rem + 22.08vw, 12.063rem);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(3.75rem, -2.75rem + 10.83vw, 5.375rem);
+  margin-bottom: clamp(12.5rem, -26.75rem + 65.42vw, 22.313rem);
+  width: clamp(87.5rem, 33rem + 90.83vw, 101.125rem);
+}
+.moreServices__title {
+  margin-top: clamp(8.75rem, 1.25rem + 12.5vw, 10.625rem);
+}
+.moreServices__title_text {
+  font-size: clamp(2.375rem, -0.625rem + 5vw, 3.125rem);
+  text-transform: uppercase;
+  color: #2a3659;
+}
+.moreServices__title_span {
+  font-family: "PlayfairDisplay-Italic", sans-serif;
+}

@@ -1,0 +1,15 @@
+.cards {
+  display: flex;
+  justify-content: center;
+  margin-top: clamp(11.875rem, 3.125rem + 14.58vw, 14.063rem);
+  gap: clamp(1.788rem, 1.24rem + 0.91vw, 1.924rem);
+  margin-bottom: clamp(13.356rem, -4.764rem + 30.2vw, 17.886rem);
+  cursor: pointer;
+  margin-bottom: 2px;
+}
+
+@media (max-width: 960px) {
+  .cards {
+    flex-wrap: wrap;
+  }
+}

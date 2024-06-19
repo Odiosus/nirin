@@ -1,0 +1,35 @@
+.card {
+  width: clamp(17.5rem, 2.5rem + 25vw, 21.25rem);
+  height: clamp(21.875rem, -5.625rem + 45.83vw, 28.75rem);
+  position: relative;
+  cursor: pointer;
+  transition: all 0.8s;
+  border-radius: 150px;
+  overflow: hidden;
+}
+.card__bgr {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  left: 0;
+  top: 0;
+  z-index: 1;
+}
+.card__title_box {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: 3;
+}
+.card__title {
+  color: #fff;
+  font-size: clamp(1.125rem, 0.125rem + 1.67vw, 1.375rem);
+  line-height: clamp(1.5rem, -0.5rem + 3.33vw, 2rem);
+  text-transform: uppercase;
+  padding: 0 clamp(2.25rem, -1.25rem + 5.83vw, 3.125rem);
+}
