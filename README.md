@@ -85,3 +85,15 @@ python manage.py runserver
 
 Перейти по адресу `http://127.0.0.1:8000/admin/` для входа в админку.
 Ввести ранее указанные логин и пароль
+
+
+## Загрузка Frontend
+
+Перейди на нужный путь и выполни три команды:
+```bash
+cd \nirin\meetandgreet\frontend\mag-app> 
+npm install --save-dev   
+npm init
+npm start  
+```
+
