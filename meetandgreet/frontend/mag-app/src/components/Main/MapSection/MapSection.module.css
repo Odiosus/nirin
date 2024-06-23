@@ -85,6 +85,9 @@
 }
 
 @media (max-width: 960px) {
+  .section__container {
+    min-height: 65vh;
+  }
   .section__search {
     width: auto;
   }
