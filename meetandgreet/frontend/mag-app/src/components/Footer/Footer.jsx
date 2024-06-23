@@ -4,15 +4,14 @@ import logo from "../../assets/footer__logo.png";
 import insta from "../../assets/instagram.png";
 import telega from "../../assets/telegram.png";
 import watsapp from "../../assets/watsapp.png";
+import ChatWidget from '../Chat/ChatWidget';
 
 export default function Footer() {
   return (
     <div className={styles.footer}>
       <div className={styles.footer__container}>
         <div className={styles.footer__top}>
-          <div
-            className={styles.footer__block + " " + styles.footer__block_left}
-          >
+          <div className={styles.footer__block + " " + styles.footer__block_left}>
             <div className={styles.title}>
               <h1 className={styles.title__text}>CONTACTS</h1>
             </div>
@@ -43,9 +42,7 @@ export default function Footer() {
               </ul>
             </div>
           </div>
-          <div
-            className={styles.footer__block + " " + styles.footer__block_center}
-          >
+          <div className={styles.footer__block + " " + styles.footer__block_center}>
             <ul className={styles.footer__list_center}>
               <li className={styles.footer__item_center}>
                 <p className={styles.footer__text_center}>TIN: 9707025574</p>
@@ -55,9 +52,7 @@ export default function Footer() {
               </li>
             </ul>
           </div>
-          <div
-            className={styles.footer__block + " " + styles.footer__block_right}
-          >
+          <div className={styles.footer__block + " " + styles.footer__block_right}>
             <ul className={styles.footer__list_right}>
               <li
                 style={{ backgroundImage: `url(${insta})` }}
@@ -95,6 +90,7 @@ export default function Footer() {
           </div>
         </div>
       </div>
+      <ChatWidget /> {/* Вставка компонента виджета чата */}
     </div>
   );
 }
