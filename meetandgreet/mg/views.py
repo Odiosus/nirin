@@ -1,4 +1,4 @@
-from rest_framework import viewsets, filters
+from rest_framework import viewsets, filters, status
 from django_filters.rest_framework import DjangoFilterBackend
 from .models import BookingNoAccount, SearchAirport, Service
 from .serializer import BookingSerializer, SearchAirportSerializer, ServiceSerializer, FastBookingSerializer
@@ -44,7 +44,7 @@ class BookingCreateApiView(CreateAPIView):
         serializer.is_valid(raise_exception=True)
         self.perform_create(serializer)
         response_data = serializer.data
-        return Response(response_data)
+        return Response(response_data, status=status.HTTP_201_CREATED)
 
     def perform_create(self, serializer):
         """Функция, непосредственно создающая запись в базе данных"""
@@ -89,5 +89,4 @@ class FastBookingCreateApiView(CreateAPIView):
         )
 
         serializer = FastBookingSerializer(new_res)
-
-        return Response(serializer.data)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
