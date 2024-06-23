@@ -33,3 +33,12 @@
   text-transform: uppercase;
   padding: 0 clamp(2.25rem, -1.25rem + 5.83vw, 3.125rem);
 }
+
+@media (max-width: 960px) {
+  .card {
+    height: 320px;
+  }
+  .card__bgr {
+    height: 100vh;
+  }
+}

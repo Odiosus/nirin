@@ -1,0 +1,14 @@
+.subTitle {
+  font-size: clamp(3rem, 2.682rem + 2.7vw, 3.875rem);
+  line-height: clamp(3.375rem, 2.966rem + 3.25vw, 4.5rem);
+  color: #fff;
+  text-transform: uppercase;
+}
+
+@media (max-width: 960px) {
+  .subTitle {
+    font-size: clamp(0.875rem, 0.55rem + 1.63vw, 2.5rem);
+    line-height: clamp(1.375rem, 0.725rem + 3.25vw, 4.625rem);
+    line-height: 44px;
+  }
+}

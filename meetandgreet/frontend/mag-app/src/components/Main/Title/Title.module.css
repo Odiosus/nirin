@@ -4,3 +4,9 @@
   text-transform: uppercase;
   color: #2a3659;
 }
+@media (max-width: 960px) {
+  .title {
+    font-size: 18px;
+    line-height: 24px;
+  }
+}

@@ -3,7 +3,8 @@ import styles from "./Header.module.css";
 import Video from "./video/Video";
 import Navigation from "./Navigation/Navigation";
 import Title from "./Title/Title";
-import Test from "./Test/Test";
+import Test from "./SubTitle/Test/Test";
+import SubTitle from "./SubTitle/SubTitle";
 
 export default function Header() {
   return (
@@ -14,11 +15,12 @@ export default function Header() {
           <Navigation />
           <div>
             <Title>VIP services</Title>
-            <Title>
+
+            <SubTitle>
               {" "}
               at all airports{" "}
               <span className={styles.header__span}>around</span> the world
-            </Title>
+            </SubTitle>
           </div>
           <div className={styles.header__custom_select_countries}>
             <Test />

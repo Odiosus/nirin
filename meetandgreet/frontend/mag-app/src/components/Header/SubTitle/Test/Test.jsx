@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import src_plane from "../../../assets/plane_arrived.png";
-import src_plane_came from "../../../assets/plane_away_and_came.png";
+import src_plane from "../../../../assets/plane_arrived.png";
+import src_plane_came from "../../../../assets/plane_away_and_came.png";
 import styles from "./Test.module.css";
 
 const fetchData = async () => {
@@ -61,12 +61,15 @@ export default function FastBookingForm() {
             )}
           </datalist>
         </div>
+
         <div className={styles.label__wrapper}>
           <label className={styles.label} htmlFor="citySelect">
             <img src={src_plane_came} alt="city arrived" />
           </label>
           <select className={styles.input} id="citySelect">
-            <option value="">airports</option>
+            <option className={styles.option} value="">
+              airports
+            </option>
             {filteredCities.map((city, i) => (
               <option className={styles.option} key={i} value={city.city}>
                 {city.city}

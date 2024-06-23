@@ -10,5 +10,6 @@
 @media (max-width: 960px) {
   .cards {
     flex-wrap: wrap;
+    margin-top: clamp(5.813rem, 4.275rem + 7.69vw, 13.5rem);
   }
 }

@@ -1,6 +1,5 @@
 .servicesBlock {
   width: 100%;
-  height: 100vh;
 }
 .servicesBlock__container {
   display: flex;
@@ -8,4 +7,10 @@
   gap: clamp(0.438rem, -0.813rem + 2.08vw, 0.75rem);
   height: 100%;
   width: 100%;
+}
+
+@media (max-width: 960px) {
+  .servicesBlock__container {
+    flex-direction: column;
+  }
 }

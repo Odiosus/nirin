@@ -45,3 +45,9 @@
   border-bottom: 1px solid #fff;
   transform: scale(1.1);
 }
+
+@media (max-width: 960px) {
+  .options {
+    display: none;
+  }
+}

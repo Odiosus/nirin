@@ -21,7 +21,7 @@ export default function MapSection() {
             <input
               className={styles.section__input}
               type="text"
-              placeholder="ENTER CITY OR AIROPORT"
+              placeholder="Enter your airport"
             />
           </div>
           <Button>Search</Button>

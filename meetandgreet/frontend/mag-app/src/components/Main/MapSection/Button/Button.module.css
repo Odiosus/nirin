@@ -6,3 +6,15 @@
   height: clamp(2.625rem, 1.926rem + 1.16vw, 3.313rem);
   cursor: pointer;
 }
+
+@media (max-width: 960px) {
+  .btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 10px;
+  }
+  .btn span {
+    font-size: 10px;
+  }
+}

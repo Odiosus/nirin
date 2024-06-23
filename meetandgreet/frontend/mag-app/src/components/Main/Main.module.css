@@ -29,13 +29,17 @@
 .main__span {
   font-family: "PlayfairDisplay-Italic", serif;
 }
-@media (max-width: 1280px) {
-  .main {
-    margin-top: -35px;
-  }
-}
-@media (max-width: 768px) {
+
+@media (max-width: 960px) {
   .main {
     margin-top: 0;
+  }
+  .section {
+    margin-top: -45px;
+    border-radius: 16px 16px 0 0;
+  }
+  .section__container {
+    width: 100%;
+    padding-inline: 10px;
   }
 }

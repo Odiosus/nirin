@@ -38,3 +38,13 @@
 .moreServices__title_span {
   font-family: "PlayfairDisplay-Italic", sans-serif;
 }
+
+@media (max-width: 960px) {
+  .moreServices__cards_wrapper {
+    flex-direction: column;
+    width: auto;
+  }
+  .moreServices__title_text {
+    font-size: 18px;
+  }
+}

@@ -27,18 +27,9 @@
 .header__span {
   font-family: "PlayfairDisplay-Italic", serif;
 }
-.btn_wrapper {
-  display: flex;
-  color: #fff;
-  margin-top: clamp(1.875rem, 0.42rem + 7.27vw, 5.875rem);
-  justify-content: center;
-  align-items: center;
-  gap: clamp(1.25rem, 1.159rem + 0.45vw, 1.5rem);
-  margin-bottom: clamp(5.625rem, 0.17rem + 11.27vw, 20.625rem);
-}
-.header__custom_select {
-  height: 40px;
-  width: 100%;
-  background-color: blue;
-  color: #fff;
+
+@media (max-width: 380px) {
+  .header__container {
+    width: 90%;
+  }
 }

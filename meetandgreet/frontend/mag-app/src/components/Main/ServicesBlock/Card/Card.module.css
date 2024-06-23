@@ -24,3 +24,12 @@
   font-weight: 400;
   min-height: clamp(9.375rem, 2.375rem + 11.67vw, 11.125rem);
 }
+
+@media (max-width: 960px) {
+  .card {
+    height: 100vh;
+  }
+  .card__bgr {
+    min-height: 100vh;
+  }
+}

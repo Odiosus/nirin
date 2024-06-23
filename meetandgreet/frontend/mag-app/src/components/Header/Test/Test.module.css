@@ -1,13 +1,13 @@
-.content {
+/* .content {
   display: flex;
   justify-content: center;
-}
-.container {
+} */
+/* .container {
   display: flex;
   align-items: center;
   gap: 24px;
   margin-top: 94px;
-}
+} */
 .label__wrapper {
   width: clamp(15rem, 13.182rem + 9.09vw, 20rem);
   height: clamp(3.75rem, 3.295rem + 2.27vw, 5rem);
@@ -15,6 +15,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   gap: 16px;
   border-radius: 50px;
 }
@@ -29,4 +30,13 @@
 }
 .datalist {
   width: 100%;
+}
+
+@media (max-width: 385px) {
+  .label__wrapper {
+    width: auto;
+  }
+  .container {
+    flex-direction: column;
+  }
 }

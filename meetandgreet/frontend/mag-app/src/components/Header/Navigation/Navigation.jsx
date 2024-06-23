@@ -3,6 +3,7 @@ import styles from "./Navigation.module.css";
 import Logo from "./Logo/Logo";
 import Menu from "./Menu/Menu";
 import Options from "./Options/Options";
+import BurgerMenu from "./BurgerMenu/BurgerMenu";
 
 export default function Navigation() {
   return (
@@ -12,6 +13,7 @@ export default function Navigation() {
         <Menu />
       </div>
       <Options />
+      <BurgerMenu />
     </div>
   );
 }

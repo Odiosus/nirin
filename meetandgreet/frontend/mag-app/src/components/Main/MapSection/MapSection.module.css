@@ -83,3 +83,24 @@
   font-size: clamp(1rem, 0.5rem + 0.83vw, 1.125rem);
   cursor: pointer;
 }
+
+@media (max-width: 960px) {
+  .section__search {
+    width: auto;
+  }
+  .section__search img {
+    height: 12.76px;
+    width: 12.76px;
+  }
+  .section__title {
+    font-size: 18px;
+  }
+  .section__input {
+    font-size: 14px;
+  }
+  .section__title_bottom {
+    font-size: 14px;
+    flex-direction: column;
+    gap: 22px;
+  }
+}

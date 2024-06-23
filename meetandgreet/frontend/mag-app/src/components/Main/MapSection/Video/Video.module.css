@@ -8,3 +8,8 @@
   z-index: 1;
   padding: clamp(6.875rem, 4.905rem + 3.26vw, 8.813rem);
 }
+@media (max-width: 960px) {
+  .video {
+    padding: 0;
+  }
+}

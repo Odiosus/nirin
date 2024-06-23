@@ -9,3 +9,13 @@
   align-items: center;
   gap: clamp(3.75rem, 2.409rem + 6.7vw, 7.438rem);
 }
+
+@media (max-width: 960px) {
+  .navigation {
+    margin-bottom: clamp(3.125rem, 1.475rem + 8.25vw, 11.375rem);
+    padding: 0 20px;
+  }
+  .navigation__container {
+    gap: clamp(3.75rem, 2.409rem + 6.7vw, 7.438rem);
+  }
+}

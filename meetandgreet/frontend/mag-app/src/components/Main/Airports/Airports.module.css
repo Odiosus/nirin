@@ -8,3 +8,9 @@
   gap: clamp(1rem, 1.67vw, 1.25rem);
   margin-block: clamp(5.625rem, -1.875rem + 12.5vw, 7.5rem);
 }
+
+@media (max-width: 960px) {
+  .airports__wrapper {
+    flex-direction: column;
+  }
+}
