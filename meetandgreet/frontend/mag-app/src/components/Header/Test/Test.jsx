@@ -3,9 +3,13 @@ import src_plane from "../../../assets/plane_arrived.png";
 import src_plane_came from "../../../assets/plane_away_and_came.png";
 import styles from "./Test.module.css";
 
+// Используем переменную окружения для API URL
+const apiUrl = process.env.REACT_APP_API_URL;
+
 const fetchData = async () => {
   try {
-    const response = await fetch("http://localhost:8000/api/v1/airport/");
+    // Убран лишний слэш между api
+    const response = await fetch(`${apiUrl}/v1/airport/`);
     if (!response.ok) {
       throw new Error("Network response was not ok");
     }
@@ -16,6 +20,7 @@ const fetchData = async () => {
     return [];
   }
 };
+
 
 export default function FastBookingForm() {
   const [cities, setCities] = useState([]);
