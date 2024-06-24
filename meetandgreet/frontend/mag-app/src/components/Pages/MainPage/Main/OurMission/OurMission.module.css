@@ -1,0 +1,71 @@
+@font-face {
+  font-family: "PlayfairDisplay-Italic";
+  src: url("../../../../../fonts/PlayfairDisplay/PlayfairDisplay-Italic.woff2")
+    format("woff2");
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Manrope-Regular";
+  src: url("../../../../../fonts/ManRope/Manrope-Regular.woff2") format("woff2");
+  font-style: normal;
+  font-weight: normal;
+}
+
+.ourMission {
+  font-family: "Manrope-Regular", sans-serif;
+  width: 100%;
+  background-image: url("../../../../../assets/OurMission.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  border-radius: 44px 44px 0 0;
+  margin-top: -121px;
+}
+.OurMission__container {
+  background-color: #ecf1f5;
+  margin-top: clamp(9.375rem, -0.125rem + 15.83vw, 11.75rem);
+  width: clamp(54.375rem, -48.125rem + 170.83vw, 80rem);
+  text-align: center;
+  border-radius: 44px 44px 0 0;
+}
+.title__block {
+  margin-top: clamp(10rem, 3.5rem + 10.83vw, 11.625rem);
+  text-transform: uppercase;
+  font-size: clamp(2.375rem, -0.625rem + 5vw, 3.125rem);
+}
+.title {
+  color: #143858;
+}
+.button__wrapper {
+  margin: clamp(5.625rem, -1.125rem + 11.25vw, 7.313rem) 0
+    clamp(3.625rem, 0.125rem + 5.83vw, 4.5rem) 0;
+}
+.button {
+  color: #2a3659;
+  padding: clamp(0.956rem, 0.156rem + 1.33vw, 1.156rem)
+    clamp(2.2rem, -0.125rem + 3.87vw, 2.781rem);
+  background-color: #cbd7e2;
+  border-radius: 44px;
+  cursor: pointer;
+}
+.span {
+  font-family: "PlayfairDisplay-Italic", serif;
+}
+
+@media (max-width: 960px) {
+  .OurMission__container {
+    width: 100%;
+    height: 50%;
+  }
+  .title {
+    font-size: 16px;
+    line-height: 20px;
+  }
+  .title__block {
+    margin-top: 75px;
+  }
+}

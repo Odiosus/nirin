@@ -1,15 +1,22 @@
 import React from "react";
 import styles from "./App.module.css";
-import Header from "./components/Header/Header";
-import Main from "./components/Main/Main";
-import Footer from "./components/Footer/Footer";
+import MainPage from "./components/Pages/MainPage/MainPage.jsx";
+import ServicesPage from "./components/Pages/ServisesPage/ServicesPage.jsx";
+import { Route, Routes } from "react-router-dom";
+import FastBooking from "./components/Pages/FastBooking/FastBooking.jsx";
+import LoginPage from "./components/Pages/LoginPage/LoginPage.jsx";
+import TravelsPage from "./components/Pages/TravelsPage/TravelsPage.jsx";
 
 function App() {
   return (
     <div className={styles.App}>
-      <Header />
-      <Main />
-      <Footer />
+      <Routes>
+        <Route path="/" exact element={<MainPage />} />
+        <Route path="/servises" element={<ServicesPage />} />
+        <Route path="/fastBooking" element={<FastBooking />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/travels" element={<TravelsPage />} />
+      </Routes>
     </div>
   );
 }
