@@ -1,4 +1,5 @@
-BASE_URL = "http://127.0.0.1:8000/api/v1"
+# BASE_URL = "http://127.0.0.1:8000/api/v1"
+BASE_URL = "https://nirin-backend.vercel.app/api/v1"
 GET_SERVICES = "/service/"
 GET_AIRPORTS = "/airports/"
 GET_AIRPORT = "/airport/"

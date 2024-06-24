@@ -1,3 +1,6 @@
+"""
+Тестирование API
+"""
 import allure
 import requests
 import pytest

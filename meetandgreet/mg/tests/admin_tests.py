@@ -1,4 +1,8 @@
+"""
+Тестирование панели администратора
+"""
 import pytest
+import requests
 from admin_data import *
 from selenium import webdriver
 from selenium.webdriver import Keys, ActionChains
@@ -6,13 +10,14 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
+import allure
 import time
 
 
 @pytest.fixture()
 def browser():
     options = Options()
-    # options.add_argument("--headless=new")
+    options.add_argument("--headless=new")
     chrome_browser = webdriver.Chrome(options=options)
     return chrome_browser
 
@@ -36,16 +41,16 @@ def test_airports_add(browser):
     button_add.click()  # Клик кнопка Добавить
 
     input_airport_name = WebDriverWait(browser, 10).until(ec.presence_of_element_located((By.XPATH, XPATH_AIRPORTS_INPUT_NAME)))
-    ActionChains(browser).click(input_airport_name).send_keys("Образец").perform()    #   Ввод в поле Название
+    ActionChains(browser).click(input_airport_name).send_keys(AIRPORT_NAME).perform()    #   Ввод в поле Название
 
     input_airport_iata = browser.find_element(By.XPATH, XPATH_AIRPORTS_INPUT_IATA)
-    ActionChains(browser).click(input_airport_iata).send_keys("OBR").perform()    # Ввод в поле IATA
+    ActionChains(browser).click(input_airport_iata).send_keys(AIRPORT_IATA).perform()    # Ввод в поле IATA
 
     input_airport_country = browser.find_element(By.XPATH, XPATH_AIRPORTS_INPUT_COUNTRY)
-    ActionChains(browser).click(input_airport_country).send_keys("Россия").perform()  # Ввод в поле Страна
+    ActionChains(browser).click(input_airport_country).send_keys(AIRPORT_COUNTRY).perform()  # Ввод в поле Страна
 
     input_airport_city = browser.find_element(By.XPATH, XPATH_AIRPORTS_INPUT_CITY)
-    ActionChains(browser).click(input_airport_city).send_keys("Город").perform()  # Ввод в поле Город
+    ActionChains(browser).click(input_airport_city).send_keys(AIRPORT_CITY).perform()  # Ввод в поле Город
     #Добавляем услугу
     panel_service = browser.find_element(By.XPATH, XPATH_AIRPORTS_PANEL_SERVICES)
     panel_service.click()   # Клик панель Услуга
@@ -65,8 +70,22 @@ def test_airports_add(browser):
     button_save = browser.find_element(By.XPATH, XPATH_BUTTON_SAVE)
     button_save.click() #   № Клик кнопка Сохранить
 
-
-
+    res = requests.get(BASE_URL + GET_AIRPORTS + f"?city={AIRPORT_CITY}&country={AIRPORT_COUNTRY}")
+    # with allure.step("Код ответа = 200"):
+    #     assert res.status_code == 200
+    # with allure.step("Content-Type = json"):
+    #     assert res.headers['Content-Type'] == "application/json"
+    # with allure.step("Дата присутствует в заголовке"):
+    #     assert len(res.headers['date']) > 0
+    data = res.json()
+    with allure.step(f"Поле 'airport_name' совпадает с '{AIRPORT_NAME}'"):
+        assert AIRPORT_NAME == data[0]['airport_name']
+    with allure.step(f"Поле 'city' совпадает с '{AIRPORT_CITY}'"):
+        assert AIRPORT_CITY == data[0]['city']
+    with allure.step(f"Поле 'country' совпадает с '{AIRPORT_COUNTRY}'"):
+        assert AIRPORT_COUNTRY == data[0]['country']
+    with allure.step(f"Поле 'iata' совпадает с '{AIRPORT_IATA}'"):
+        assert AIRPORT_IATA == data[0]['iata']
 
     browser.quit()
 
