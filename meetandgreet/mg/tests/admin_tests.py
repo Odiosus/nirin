@@ -118,7 +118,7 @@ def test_airports_search(browser):
     with allure.step("-----------------------"):
         pass
 
-
+    browser.quit()
 
 
 def test_airports_delete(browser):
@@ -176,3 +176,5 @@ def test_airports_delete(browser):
         assert len(airport_check) == rec_count-1
     with allure.step("-----------------------"):
         pass
+
+    browser.quit()
