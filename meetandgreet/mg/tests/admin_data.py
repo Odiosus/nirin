@@ -32,3 +32,14 @@ AIRPORT_IATA = "OBR"
 SERVICE_NAME = "Meeting"
 SERVICE_DESCR = "Встреча в аэропорту"
 SERVICE_PRICE = 100
+
+XPATH_AIRPORTS_NAME_SELECT = "//span[@role='textbox']"  # Поле Название аэропорта
+XPATH_AIRPORTS_BUTTON_FIND = "//button[contains(text(),'Найти')]" # Кнопка Найти
+# XPATH_AIRPORTS_CHECK = "//tbody/child::tr/child::td/child::input[@type='checkbox']" # Чек-боксы списка найденых аэропортов
+XPATH_AIRPORTS_CHECK = "//a[contains(text(),'Образец')]"
+XPATH_AIRPORTS_ACTION = "//select[@name='action']"  # Список выбора действия
+XPATH_AIRPORTS_DELETE = "//a[contains(text(),'Удалить')]"   # Кнопка Удалить
+XPATH_AIRPORTS_BUTTON_CONFIRM = "//input[@value='Да, я уверен']"   # Кнопка подтверждения
+
+
+

@@ -17,7 +17,7 @@ import time
 @pytest.fixture()
 def browser():
     options = Options()
-    options.add_argument("--headless=new")
+    # options.add_argument("--headless=new")
     chrome_browser = webdriver.Chrome(options=options)
     return chrome_browser
 
@@ -86,6 +86,93 @@ def test_airports_add(browser):
         assert AIRPORT_COUNTRY == data[0]['country']
     with allure.step(f"Поле 'iata' совпадает с '{AIRPORT_IATA}'"):
         assert AIRPORT_IATA == data[0]['iata']
+    with allure.step("-----------------------"):
+        pass
 
     browser.quit()
 
+
+def test_airports_search(browser):
+    """ Проверка поиска аэропорта """
+    browser.get(BASE_URL_ADMIN + LOGIN)
+    input_name = WebDriverWait(browser, 10).until(ec.presence_of_element_located((By.XPATH, XPATH_LOGIN_NAME)))
+    ActionChains(browser).click(input_name).send_keys("eugen").perform()  # Ввод в поле Login
+
+    input_password = WebDriverWait(browser, 10).until(ec.presence_of_element_located((By.XPATH, XPATH_LOGIN_PASSWORD)))
+    ActionChains(browser).click(input_password).send_keys("12345").perform()  # Ввод в поле Password
+
+    button_submit = WebDriverWait(browser, 10).until(ec.presence_of_element_located((By.XPATH, XPATH_LOGIN_BUTTON)))
+    button_submit.click()  # Клик кнопка Войти
+
+    browser.get(BASE_URL_ADMIN + AIRPORTS)
+    input_name = WebDriverWait(browser, 10).until(ec.presence_of_element_located((By.XPATH, XPATH_AIRPORTS_NAME_SELECT)))
+    ActionChains(browser).click(input_name).send_keys(AIRPORT_NAME).perform()  # Ввод в поле Наименование аэропорта
+
+    button_search = browser.find_element(By.XPATH, XPATH_AIRPORTS_BUTTON_FIND)
+    button_search.click()  # Клик кнопка Найти
+
+    airport_check = browser.find_elements(By.XPATH, XPATH_AIRPORTS_CHECK)  # Находим все записи с Наименованием аэропорта
+
+    with allure.step(f"Аэропорт '{AIRPORT_NAME}' присутствует в результате поиска"):
+        assert len(airport_check) > 0
+    with allure.step("-----------------------"):
+        pass
+
+
+
+
+def test_airports_delete(browser):
+    """ Проверка удаления аэропорта """
+
+    browser.get(BASE_URL_ADMIN + LOGIN)
+    input_name = WebDriverWait(browser, 10).until(ec.presence_of_element_located((By.XPATH, XPATH_LOGIN_NAME)))
+    ActionChains(browser).click(input_name).send_keys("eugen").perform()  # Ввод в поле Login
+
+    input_password = WebDriverWait(browser, 10).until(ec.presence_of_element_located((By.XPATH, XPATH_LOGIN_PASSWORD)))
+    ActionChains(browser).click(input_password).send_keys("12345").perform()  # Ввод в поле Password
+
+    button_submit = WebDriverWait(browser, 10).until(ec.presence_of_element_located((By.XPATH, XPATH_LOGIN_BUTTON)))
+    button_submit.click()  # Клик кнопка Войти
+    """   """
+
+    browser.get(BASE_URL_ADMIN + AIRPORTS)
+    input_name = WebDriverWait(browser, 10).until(
+        ec.presence_of_element_located((By.XPATH, XPATH_AIRPORTS_NAME_SELECT)))
+    ActionChains(browser).click(input_name).send_keys(AIRPORT_NAME).perform()  # Ввод в поле Наименование аэропорта
+
+    button_search = browser.find_element(By.XPATH, XPATH_AIRPORTS_BUTTON_FIND)
+    button_search.click()  # Клик кнопка Найти
+
+
+    """   """
+    airport_check = browser.find_elements(By.XPATH, XPATH_AIRPORTS_CHECK)
+    airport_check[0].click()  # Клик Название аэропорта
+    rec_count = len(airport_check)
+
+    # airport_action = browser.find_element(By.XPATH, XPATH_AIRPORTS_ACTION)
+    # airport_action.click()  # Клик поля выбора действия
+
+    button_delete = browser.find_element(By.XPATH, XPATH_AIRPORTS_DELETE)
+    button_delete.click()  # Клик кнопка Удалить
+
+    button_confirm = browser.find_element(By.XPATH, XPATH_AIRPORTS_BUTTON_CONFIRM)
+    button_confirm.click()  # Клик кнопка Да, я уверен
+
+    """ Ищем аэропорт снова"""
+    # button_do = browser.find_element(By.XPATH, XPATH_AIRPORTS_BUTTON_DO)
+    # button_do.click()  # Клик кнопка Выполнить
+
+    browser.get(BASE_URL_ADMIN + AIRPORTS)
+    input_name = WebDriverWait(browser, 10).until(
+        ec.presence_of_element_located((By.XPATH, XPATH_AIRPORTS_NAME_SELECT)))
+    ActionChains(browser).click(input_name).send_keys(AIRPORT_NAME).perform()  # Ввод в поле Наименование аэропорта
+
+    button_search = browser.find_element(By.XPATH, XPATH_AIRPORTS_BUTTON_FIND)
+    button_search.click()  # Клик кнопка Найти
+
+    airport_check = browser.find_elements(By.XPATH, XPATH_AIRPORTS_CHECK)  # Находим все записи с Наименованием аэропорта
+
+    with allure.step(f"Аэропорт '{AIRPORT_NAME}' удален"):
+        assert len(airport_check) == rec_count-1
+    with allure.step("-----------------------"):
+        pass
