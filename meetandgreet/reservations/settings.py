@@ -16,8 +16,8 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
-SITE_ID = 1
+ALLOWED_HOSTS = ['.vercel.app', 'nirin-backend.vercel.app']
+# SITE_ID = 1
 
 # Application definition
 
@@ -85,8 +85,15 @@ WSGI_APPLICATION = 'reservations.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': os.getenv('DB_ENGINE'),
+        'NAME': os.getenv('DB_NAME'),
+        'USER': os.getenv('DB_USER'),
+        'PASSWORD': os.getenv('DB_PASSWORD'),
+        'HOST': os.getenv('DB_HOST'),
+        'PORT': os.getenv('DB_PORT'),
+        'OPTIONS': {
+            'sslmode': os.getenv('DB_SSLMODE'),
+        },
     }
 }
 
@@ -131,7 +138,11 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 CORS_ORIGIN_WHITELIST = [
     'http://localhost:3000',
     'http://localhost:8000',
+    'https://nirin-backend.vercel.app',
 ]
+
+# CORS_ALLOW_ALL_ORIGINS = True  # добавлено
+# CORS_ALLOWS_CREDENTIALS = True  # добавлено
 
 # Token Configuration For JWT Authentication
 SIMPLE_JWT = {
@@ -294,7 +305,7 @@ JAZZMIN_SETTINGS = {
     # # Связывать ли шрифт с Fonts.googleapis.com (в противном случае используйте custom_css для указания шрифта)
     # "use_google_fonts_cdn": True,
     # Показывать ли настройщик пользовательского интерфейса на боковой панели
-    "show_ui_builder": True,
+    "show_ui_builder": False,
 
     ###############
     # Change view #
@@ -355,8 +366,22 @@ JAZZMIN_UI_TWEAKS = {
     "actions_sticky_top": True
 }
 
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'root': {
+        'handlers': ['console'],
+        'level': 'DEBUG',
+    },
+}
+
 # Настройки библиотеки Django. Почтовая рассылка
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 SERVER_EMAIL = os.getenv('SERVER_EMAIL')
 EMAIL_HOST = os.getenv('EMAIL_HOST')
 EMAIL_PORT = os.getenv('EMAIL_PORT')

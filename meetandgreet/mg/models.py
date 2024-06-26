@@ -85,8 +85,8 @@ class BookingNoAccount(models.Model):
         return self.customer_name
 
     class Meta:
-        verbose_name = 'Бронирование без аккаунта'
-        verbose_name_plural = 'Бронирования без аккаунта'
+        verbose_name = 'Бронирование'
+        verbose_name_plural = 'Бронирования'
 
 
 class Feedback(models.Model):
