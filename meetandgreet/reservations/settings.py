@@ -305,7 +305,7 @@ JAZZMIN_SETTINGS = {
     # # Связывать ли шрифт с Fonts.googleapis.com (в противном случае используйте custom_css для указания шрифта)
     # "use_google_fonts_cdn": True,
     # Показывать ли настройщик пользовательского интерфейса на боковой панели
-    "show_ui_builder": True,
+    "show_ui_builder": False,
 
     ###############
     # Change view #
@@ -381,7 +381,7 @@ LOGGING = {
 }
 
 # Настройки библиотеки Django. Почтовая рассылка
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 SERVER_EMAIL = os.getenv('SERVER_EMAIL')
 EMAIL_HOST = os.getenv('EMAIL_HOST')
 EMAIL_PORT = os.getenv('EMAIL_PORT')

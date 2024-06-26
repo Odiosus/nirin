@@ -5,7 +5,8 @@ from django.dispatch import receiver
 from rest_framework import viewsets, filters
 from django_filters.rest_framework import DjangoFilterBackend
 from .models import BookingNoAccount, SearchAirport, Service, Feedback
-from .serializer import BookingSerializer, SearchAirportSerializer, ServiceSerializer, FastBookingSerializer, FeedbackSerializer
+from .serializer import BookingSerializer, SearchAirportSerializer, ServiceSerializer, FastBookingSerializer, \
+    FeedbackSerializer
 from rest_framework.response import Response
 from rest_framework.generics import ListAPIView, CreateAPIView, RetrieveAPIView
 from django.core.mail import send_mail
