@@ -1,0 +1,127 @@
+.services__wrapper {
+  background-color: white;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.codeCity__wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  color: #2a3659;
+  width: 125px;
+}
+
+.code {
+  display: flex;
+  gap: 13px;
+}
+
+.code__heading {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.city {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.code__img {
+  width: 38px;
+  height: 29px;
+}
+
+.services__info {
+  background-color: #f2f3f7;
+  margin: 0 20px;
+  padding: 22px 17px;
+  border-radius: 30px;
+}
+
+.services__info__input {
+  display: flex;
+  flex-direction: column;
+  gap: 31px;
+  align-items: center;
+}
+
+.city__wrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 530px;
+  margin: 0 auto;
+}
+
+.flightNumber {
+  width: 630px;
+  height: 80px;
+  border-radius: 30px;
+  padding: 26px;
+  font-size: 20px;
+  outline: none;
+}
+
+.flightNumber::placeholder {
+  color: #2a3659;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.flightNumber:disabled {
+  background-color: #fff;
+  color: gray;
+  cursor: not-allowed;
+}
+
+.services__info__inputs {
+  display: flex;
+  gap: 20px;
+}
+
+.info__heading {
+  display: block;
+  color: #2a3659;
+  font-size: 28px;
+  font-weight: bold;
+  margin-left: 127px;
+  margin-bottom: 38px;
+  text-transform: uppercase;
+}
+
+.flight__info {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.flight__date__wrapper {
+  display: flex;
+  gap: 20px;
+}
+
+.flightDate {
+  width: 305px;
+  height: 80px;
+  border-radius: 30px;
+  color: #2a3659;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 26px;
+  outline: none;
+}
+
+.flightDate::placeholder {
+  color: #2a3659;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.flightDate:disabled {
+  background-color: #fff;
+  color: gray;
+  cursor: not-allowed;
+}

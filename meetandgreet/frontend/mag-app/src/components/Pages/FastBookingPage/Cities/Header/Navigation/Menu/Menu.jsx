@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./Menu.module.css";
-import plane_icon from "../../../../../../assets/airplane.png";
+import plane_icon from "../../../../../../../assets/airplane.png";
 import { Link } from "react-router-dom";
 
 export default function Menu() {

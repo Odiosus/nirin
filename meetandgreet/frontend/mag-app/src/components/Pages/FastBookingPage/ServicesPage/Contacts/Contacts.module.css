@@ -1,0 +1,26 @@
+.contacts {
+  display: flex;
+  gap: 20px;
+  margin: 0 auto;
+}
+
+.contactsInput {
+  height: 80px;
+  border: solid #2a3659 1px;
+  border-radius: 30px;
+  background-color: #fff;
+  padding: 26px;
+  outline: none;
+  font-size: 20px;
+}
+
+.contactsInput::placeholder {
+  color: #2a3659;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.contactsInput:disabled {
+  color: gray;
+  cursor: not-allowed;
+}

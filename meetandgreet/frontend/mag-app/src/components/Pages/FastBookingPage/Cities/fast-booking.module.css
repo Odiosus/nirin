@@ -1,0 +1,54 @@
+.mainBtn {
+  background-color: #7fadd2;
+  width: 414px;
+  height: 80px;
+  font-size: 20px;
+  color: #ffffff;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+.services {
+  background-color: #f2f2f2;
+}
+
+.form {
+  margin: 0 auto;
+  width: 1356px;
+  padding-top: 27px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.progress__wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2.7rem;
+}
+
+.progress__header {
+  color: #2a3659;
+  font-size: 24px;
+}
+
+.progress {
+  width: 1280px;
+  height: 8px;
+  border-radius: 10px;
+  background-color: #d9d9d9;
+  position: relative;
+}
+
+.step {
+  height: 8px;
+  width: 320px;
+  border-radius: 10px;
+  background-color: #7fadd2;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+}

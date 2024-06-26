@@ -1,0 +1,8 @@
+.fast__nav {
+  background: url("../../../../assets/fast-booking_header_bg.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 20vh;
+  padding: 40px 320px;
+}

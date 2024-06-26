@@ -1,0 +1,67 @@
+.travelers {
+  background-color: #f2f3f7;
+  margin: 0 20px;
+  padding: 22px 17px;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.travelers__type__wrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 1280px;
+}
+
+.info__heading {
+  display: block;
+  color: #2a3659;
+  font-size: 28px;
+  font-weight: bold;
+  margin-left: 127px;
+  margin-bottom: 55px;
+  text-transform: uppercase;
+}
+
+.travelers__img {
+  width: 35px;
+  height: 38px;
+  margin-right: 8px;
+}
+
+.travelers__type {
+  display: flex;
+  align-items: center;
+}
+
+.travelers__name {
+  font-size: 20px;
+  color: #2a3659;
+  margin-right: 12px;
+}
+
+.travelers__input {
+  width: 137px;
+  height: 40px;
+  border-radius: 60px;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 21px;
+}
+
+.travelersBtn {
+  background-color: transparent;
+  font-size: 20px;
+  color: #2a3659;
+}
+
+.travelersBtn:disabled {
+  cursor: not-allowed;
+}
+
+.travelersValue {
+  font-size: 20px;
+  color: #2a3659;
+}

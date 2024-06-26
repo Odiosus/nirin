@@ -1,0 +1,62 @@
+.cities {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  height: 80vh;
+}
+
+.cities__bg {
+  position: absolute;
+  background-image: url("../../../../assets/fast-booking_main_bg.svg");
+  width: 254px;
+  top: 0;
+  left: 0;
+  bottom: 0;
+}
+
+.main__header {
+  font-size: 64px;
+  color: #2a3659;
+  margin-top: 45px;
+  margin-bottom: 114px;
+}
+
+.city__input__wrapper {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.city__input {
+  display: flex;
+  gap: 32px;
+  width: 413px;
+  height: 80px;
+  background-color: #e2e9f3;
+  border: none;
+  border-radius: 30px;
+  color: #2a3659;
+  margin-bottom: 181px;
+  padding-bottom: 20px;
+  padding-top: 20px;
+  padding-left: 24px;
+  padding-right: 10px;
+}
+
+.city__input > img {
+  width: 40px;
+  height: 31px;
+}
+
+.city__input > img:nth-child(1) {
+  width: 80px;
+  height: 31px;
+}
+
+.city__input > input {
+  background-color: transparent;
+  outline: none;
+  font-size: 1.2rem;
+  width: 90%;
+}

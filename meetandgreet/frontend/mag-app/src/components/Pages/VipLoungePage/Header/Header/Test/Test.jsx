@@ -1,10 +1,7 @@
 import { useState, useEffect } from "react";
-import src_plane from "../../../../../../assets/plane_arrived.png";
-import src_plane_came from "../../../../../../assets/plane_away_and_came.png";
-import src_plane_arrival from "../../../../../../assets/airplane-came.png";
-import src_search from "../../../../../../assets/arrow_btn_services.png";
+import src_plane from "../../../assets/plane_arrived.png";
+import src_plane_came from "../../../assets/plane_away_and_came.png";
 import styles from "./Test.module.css";
-import { Link } from "react-router-dom";
 
 const fetchData = async () => {
   try {
@@ -46,7 +43,7 @@ export default function FastBookingForm() {
       <div className={styles.container}>
         <div className={styles.label__wrapper}>
           <label className={styles.label} htmlFor="countrySelect">
-            <img src={src_plane} alt="country arrived" />
+            <img className={styles.img} src={src_plane} alt="country arrived" />
           </label>
           <input
             className={styles.input}
@@ -54,7 +51,7 @@ export default function FastBookingForm() {
             id="countryInput"
             list="countryList"
             onChange={handleCountryChange}
-            placeholder="Departure"
+            placeholder="Start typing..."
           />
           <datalist className={styles.datalist} id="countryList">
             {[...new Set(cities.map((city) => city.country))].map(
@@ -67,40 +64,20 @@ export default function FastBookingForm() {
 
         <div className={styles.label__wrapper}>
           <label className={styles.label} htmlFor="citySelect">
-            <img src={src_plane_came} alt="city arrived" />
+            <img
+              className={styles.img}
+              src={src_plane_came}
+              alt="city arrived"
+            />
           </label>
           <select className={styles.input} id="citySelect">
-            <option className={styles.option} value="">
-              Transit
-            </option>
+            <option value="">airports</option>
             {filteredCities.map((city, i) => (
               <option className={styles.option} key={i} value={city.city}>
                 {city.city}
               </option>
             ))}
           </select>
-        </div>
-
-        <div className={styles.label__wrapper}>
-          <label className={styles.label} htmlFor="citySelect">
-            <img src={src_plane_arrival} alt="city arrived" />
-          </label>
-          <select className={styles.input} id="citySelect">
-            <option className={styles.option} value="">
-              arrival
-            </option>
-            {filteredCities.map((city, i) => (
-              <option className={styles.option} key={i} value={city.city}>
-                {city.city}
-              </option>
-            ))}
-          </select>
-        </div>
-
-        <div className={styles.button__link}>
-          <Link to="/servises" className={styles.button}>
-            <img src={src_search} alt="search" />
-          </Link>
         </div>
       </div>
     </div>

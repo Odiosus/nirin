@@ -1,0 +1,80 @@
+@font-face {
+  font-family: "Manrope", sans-serif;
+  src: url("../../../fonts/ManRope/Manrope-Regular.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 500;
+}
+@font-face {
+  font-family: "Mulish", sans-serif;
+  src: url("../../../fonts/Mulish-SemiBold/Mulish-SemiBold.woff2")
+    format("woff2");
+  font-style: normal;
+  font-weight: 600;
+}
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin-inline: auto;
+  background-color: #f2f2f2;
+  font-family: "Manrope", sans-serif;
+  /* font-family: "Mulish", sans-serif; */
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+ul,
+ol {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+a {
+  background-color: transparent;
+  text-decoration: none;
+  color: inherit;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  padding: 0;
+  margin: 0;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  background-color: transparent;
+  font: inherit; /* По дефолту, шрифтовые свойства, для этих элементов не наследуются */
+  color: inherit;
+  letter-spacing: inherit;
+}
+
+/* .vip {
+  background-color: #ede4db;
+} */
+
+.container {
+  max-width: 1778px;
+
+  /* background: rgb(193, 231, 157) url("../../public/images/banner.jpg") top
+    center/contain no-repeat; */
+  margin-inline: auto;
+}
