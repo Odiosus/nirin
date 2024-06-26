@@ -1,0 +1,21 @@
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: clamp(5.625rem, 3.943rem + 8.41vw, 10.25rem);
+}
+.navigation__container {
+  display: flex;
+  align-items: center;
+  gap: clamp(3.75rem, 2.409rem + 6.7vw, 7.438rem);
+}
+
+@media (max-width: 960px) {
+  .navigation {
+    margin-bottom: clamp(3.125rem, 1.475rem + 8.25vw, 11.375rem);
+    padding: 0 20px;
+  }
+  .navigation__container {
+    gap: clamp(3.75rem, 2.409rem + 6.7vw, 7.438rem);
+  }
+}

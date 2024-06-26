@@ -1,7 +1,10 @@
 import { useState, useEffect } from "react";
 import src_plane from "../../../../../../assets/plane_arrived.png";
 import src_plane_came from "../../../../../../assets/plane_away_and_came.png";
+import src_plane_arrival from "../../../../../../assets/airplane-came.png";
+import src_search from "../../../../../../assets/arrow_btn_services.png";
 import styles from "./Test.module.css";
+import { Link } from "react-router-dom";
 
 const fetchData = async () => {
   try {
@@ -51,7 +54,7 @@ export default function FastBookingForm() {
             id="countryInput"
             list="countryList"
             onChange={handleCountryChange}
-            placeholder="Start typing..."
+            placeholder="Departure"
           />
           <datalist className={styles.datalist} id="countryList">
             {[...new Set(cities.map((city) => city.country))].map(
@@ -68,7 +71,7 @@ export default function FastBookingForm() {
           </label>
           <select className={styles.input} id="citySelect">
             <option className={styles.option} value="">
-              airports
+              Transit
             </option>
             {filteredCities.map((city, i) => (
               <option className={styles.option} key={i} value={city.city}>
@@ -80,11 +83,11 @@ export default function FastBookingForm() {
 
         <div className={styles.label__wrapper}>
           <label className={styles.label} htmlFor="citySelect">
-            <img src={src_plane_came} alt="city arrived" />
+            <img src={src_plane_arrival} alt="city arrived" />
           </label>
           <select className={styles.input} id="citySelect">
             <option className={styles.option} value="">
-              airports
+              arrival
             </option>
             {filteredCities.map((city, i) => (
               <option className={styles.option} key={i} value={city.city}>
@@ -92,6 +95,12 @@ export default function FastBookingForm() {
               </option>
             ))}
           </select>
+        </div>
+
+        <div className={styles.button__link}>
+          <Link to="/servises" className={styles.button}>
+            <img src={src_search} alt="search" />
+          </Link>
         </div>
       </div>
     </div>

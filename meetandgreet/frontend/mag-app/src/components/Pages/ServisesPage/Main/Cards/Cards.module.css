@@ -2,11 +2,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-block: 75px 77px;
 }
 .cards__wrapper {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, 1fr);
-  width: 1280px;
+  max-width: 1280px;
   gap: 30px;
 }

@@ -29,16 +29,32 @@
   color: #fff;
   text-transform: capitalize;
   font-size: 18px;
+  width: 47%;
 }
-.input ::placeholder {
+.input::placeholder {
   color: #fff;
-  background-color: #fff;
 }
 .datalist {
   width: 100%;
 }
 .option {
   color: #fff;
+}
+.button__link {
+  background-color: #cbd7e2;
+  width: clamp(4rem, -8.818rem + 5.09vw, 14rem);
+  height: clamp(3.75rem, 3.295rem + 2.27vw, 5rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50px;
+}
+.button {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 @media (max-width: 960px) {
   .container {
@@ -59,5 +75,9 @@
   }
   .option {
     color: #fff;
+  }
+  .button__link {
+    width: 280px;
+    height: 60px;
   }
 }

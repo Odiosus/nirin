@@ -1,0 +1,25 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 646px;
+  height: 414px;
+  background-color: #d9d9d9;
+  padding: 29px 96px;
+  gap: 14px;
+  border-radius: 38px;
+}
+.form input {
+  height: 52px;
+  padding: 18px 30px;
+  border-radius: 20px;
+}
+.form textarea {
+  height: 97px;
+  padding: 18px 30px;
+  border-radius: 20px;
+}
+.form__areas {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
