@@ -21,7 +21,7 @@ export default function FastBookingForm() {
           <ServicesPage flight={flight} setFlightDetails={setFlightDetails} />
         </Link>
         <Link to="/confirmation">
-          <Confirmation />
+          <Confirmation flightDetails={flightDetails} />
         </Link>
       </main>
     </>
