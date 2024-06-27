@@ -1,4 +1,4 @@
-name: Django CI
+name: Django CI and Sync
 
 on:
   push:
@@ -8,7 +8,6 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
     strategy:
       max-parallel: 4
@@ -41,3 +40,22 @@ jobs:
       run: |
         cd meetandgreet  
         python manage.py test
+
+  sync:
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Push to deploy repo
+      env:
+        DEPLOY_REPO_TOKEN: ${{ secrets.DEPLOY_REPO_TOKEN }}
+      run: |
+        git config --global user.name 'GitHub Action'
+        git config --global user.email 'action@github.com'
+        git remote add deploy https://${DEPLOY_REPO_TOKEN}@github.com/melixz/nirin_deploy.git
+        git push deploy main:main --force
