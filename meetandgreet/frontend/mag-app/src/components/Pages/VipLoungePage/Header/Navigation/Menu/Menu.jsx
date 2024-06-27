@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./Menu.module.css";
 import plane_icon from "../../../../../../assets/vip_lounge_airplane.png";
+import { Link } from "react-router-dom";
 
 export default function Menu() {
   return (
@@ -15,18 +16,24 @@ export default function Menu() {
                 alt="plane_icon"
               />
             </div>
-            <p className={styles.menu__text}>Fast Booking</p>
+            <Link to="/fast_booking">
+              <p className={styles.menu__text}>Fast Booking</p>
+            </Link>
           </div>
         </li>
         <div className={styles.menu__list_wrapper}>
           <li className={styles.menu__list}>
             <div className={styles.menu__item}>
-              <p className={styles.menu__text}>Services +</p>
+              <Link to="/servises">
+                <p className={styles.menu__text}>Services +</p>
+              </Link>
             </div>
           </li>
           <li className={styles.menu__list}>
             <div className={styles.menu__item}>
-              <p className={styles.menu__text}>Travalers +</p>
+              <Link to="/travels">
+                <p className={styles.menu__text}>Travalers +</p>
+              </Link>
             </div>
           </li>
         </div>

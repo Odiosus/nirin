@@ -57,6 +57,9 @@
   font-size: clamp(0.875rem, 0.807rem + 0.34vw, 1.063rem);
   margin: 0;
 }
+a p {
+  color: #2a3659;
+}
 
 @media (max-width: 768px) {
   .menu {
