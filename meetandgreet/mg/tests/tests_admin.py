@@ -17,7 +17,7 @@ import time
 @pytest.fixture()
 def browser():
     options = Options()
-    # options.add_argument("--headless=new")
+    options.add_argument("--headless=new")
     chrome_browser = webdriver.Chrome(options=options)
     return chrome_browser
 
@@ -32,9 +32,6 @@ def test_airports_add(browser):
 
     button_submit = WebDriverWait(browser, 10).until(ec.presence_of_element_located((By.XPATH, XPATH_LOGIN_BUTTON)))
     button_submit.click()  # Клик кнопка Войти
-
-    # alert = browser.find_element(By.LINK_TEXT, "OK")
-    # alert.click()
 
     browser.get(BASE_URL_ADMIN + AIRPORTS)
     button_add = WebDriverWait(browser, 10).until(ec.presence_of_element_located((By.XPATH, XPATH_AIRPORTS_BUTTON_ADD)))
@@ -51,32 +48,35 @@ def test_airports_add(browser):
 
     input_airport_city = browser.find_element(By.XPATH, XPATH_AIRPORTS_INPUT_CITY)
     ActionChains(browser).click(input_airport_city).send_keys(AIRPORT_CITY).perform()  # Ввод в поле Город
+
     #Добавляем услугу
-    panel_service = browser.find_element(By.XPATH, XPATH_AIRPORTS_PANEL_SERVICES)
+    panel_service = WebDriverWait(browser, 10).until(ec.presence_of_element_located((By.XPATH, XPATH_AIRPORTS_PANEL_SERVICES)))
+    # panel_service = browser.find_element(By.XPATH, XPATH_AIRPORTS_PANEL_SERVICES)
     panel_service.click()   # Клик панель Услуга
 
-    time.sleep(3)
+    input_service = WebDriverWait(browser, 10).until(ec.presence_of_element_located((By.XPATH, XPATH_AIRPORTS_INPUT_SERVICE)))
+    # input_service = browser.find_element(By.XPATH, XPATH_AIRPORTS_INPUT_SERVICE)
+    ActionChains(browser).move_to_element(input_service).pause(1).click().perform()
+    # input_service.click()   # Клик поле Услуга
 
-    input_service = browser.find_element(By.XPATH, XPATH_AIRPORTS_INPUT_SERVICE)
-    input_service.click()   # Клик поле Услуга
+    # time.sleep(2)
 
-    time.sleep(3)
-
+    # list_services = WebDriverWait(browser, 5).until(ec.element_to_be_clickable((By.XPATH, XPATH_AIRPORTS_LIST_SERVICES)))
     list_services = browser.find_elements(By.XPATH, XPATH_AIRPORTS_LIST_SERVICES)
     list_services[0].click()    # Клик первый элемент в выпадающем списке
-
-    time.sleep(3)
 
     button_save = browser.find_element(By.XPATH, XPATH_BUTTON_SAVE)
     button_save.click() #   № Клик кнопка Сохранить
 
+    time.sleep(1)
+
     res = requests.get(BASE_URL + GET_AIRPORTS + f"?city={AIRPORT_CITY}&country={AIRPORT_COUNTRY}")
-    # with allure.step("Код ответа = 200"):
-    #     assert res.status_code == 200
-    # with allure.step("Content-Type = json"):
-    #     assert res.headers['Content-Type'] == "application/json"
-    # with allure.step("Дата присутствует в заголовке"):
-    #     assert len(res.headers['date']) > 0
+    with allure.step("Код ответа = 200"):
+        assert res.status_code == 200
+    with allure.step("Content-Type = json"):
+        assert res.headers['Content-Type'] == "application/json"
+    with allure.step("Дата присутствует в заголовке"):
+        assert len(res.headers['date']) > 0
     data = res.json()
     with allure.step(f"Поле 'airport_name' совпадает с '{AIRPORT_NAME}'"):
         assert AIRPORT_NAME == data[0]['airport_name']
@@ -124,6 +124,7 @@ def test_airports_search(browser):
 def test_airports_delete(browser):
     """ Проверка удаления аэропорта """
 
+    # Логинимся в админку
     browser.get(BASE_URL_ADMIN + LOGIN)
     input_name = WebDriverWait(browser, 10).until(ec.presence_of_element_located((By.XPATH, XPATH_LOGIN_NAME)))
     ActionChains(browser).click(input_name).send_keys("eugen").perform()  # Ввод в поле Login
@@ -133,8 +134,8 @@ def test_airports_delete(browser):
 
     button_submit = WebDriverWait(browser, 10).until(ec.presence_of_element_located((By.XPATH, XPATH_LOGIN_BUTTON)))
     button_submit.click()  # Клик кнопка Войти
-    """   """
 
+    # Поиск аэропорта
     browser.get(BASE_URL_ADMIN + AIRPORTS)
     input_name = WebDriverWait(browser, 10).until(
         ec.presence_of_element_located((By.XPATH, XPATH_AIRPORTS_NAME_SELECT)))
@@ -144,7 +145,7 @@ def test_airports_delete(browser):
     button_search.click()  # Клик кнопка Найти
 
 
-    """   """
+    # Удаляем аэропорт
     airport_check = browser.find_elements(By.XPATH, XPATH_AIRPORTS_CHECK)
     airport_check[0].click()  # Клик Название аэропорта
     rec_count = len(airport_check)
@@ -158,10 +159,7 @@ def test_airports_delete(browser):
     button_confirm = browser.find_element(By.XPATH, XPATH_AIRPORTS_BUTTON_CONFIRM)
     button_confirm.click()  # Клик кнопка Да, я уверен
 
-    """ Ищем аэропорт снова"""
-    # button_do = browser.find_element(By.XPATH, XPATH_AIRPORTS_BUTTON_DO)
-    # button_do.click()  # Клик кнопка Выполнить
-
+    # Ищем аэропорт снова для проверки удаления
     browser.get(BASE_URL_ADMIN + AIRPORTS)
     input_name = WebDriverWait(browser, 10).until(
         ec.presence_of_element_located((By.XPATH, XPATH_AIRPORTS_NAME_SELECT)))

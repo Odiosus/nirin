@@ -1,0 +1,46 @@
+name: Automated tests
+
+on:
+  workflow_dispatch:
+    inputs:
+      deployment_target:
+        description: Выберите тест
+        required: true
+        default: all_tests
+        type: choice
+        options:
+          - test_api
+          - test_admin
+
+
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install Chrome
+        run: sudo apt-get install google-chrome-stable
+      - name: Install dependencies
+        run:
+          cd meetandgreet
+          pip install -r requirements.txt
+      - name: Set environment variables
+        env:
+          DJANGO_SECRET_KEY: ${{ secrets.DJANGO_SECRET_KEY }}
+          DEBUG: 'True'
+          run: |
+            echo "SECRET_KEY=${{ secrets.SECRET_KEY }}" >> $GITHUB_ENV
+            echo "DEBUG=True" >> $GITHUB_ENV
+      - name: test_api
+        if: "github.event.inputs.deployment_target == 'test_api'"
+        run: pytest mg/tests/test_api.py
+      - name: test_admin
+        if: "github.event.inputs.deployment_target == 'test_admin'"
+        run: pytest mg/tests/test_api.py
+

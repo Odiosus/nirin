@@ -20,8 +20,7 @@ XPATH_AIRPORTS_INPUT_IATA = "//input[@name='iata']"
 XPATH_AIRPORTS_INPUT_COUNTRY = "//input[@name='country']"
 XPATH_AIRPORTS_INPUT_CITY = "//input[@name='city']"
 XPATH_AIRPORTS_PANEL_SERVICES = "//div[@data-target='#услуги-tab']"    # Панель Услуги
-XPATH_AIRPORTS_INPUT_SERVICE = "//span[@role='combobox']"   # Поле Услуга
-# XPATH_AIRPORTS_INPUT_SERVICE = "//a[@id='add_id_service']"   # Поле Услуга
+XPATH_AIRPORTS_INPUT_SERVICE = "//select[@name='service']/following::span"
 XPATH_AIRPORTS_LIST_SERVICES = "//ul[@id='select2-id_service-results']/child::li"   # Список Услуг
 XPATH_BUTTON_SAVE = "//input[@name='_save']"
 
@@ -35,7 +34,6 @@ SERVICE_PRICE = 100
 
 XPATH_AIRPORTS_NAME_SELECT = "//span[@role='textbox']"  # Поле Название аэропорта
 XPATH_AIRPORTS_BUTTON_FIND = "//button[contains(text(),'Найти')]" # Кнопка Найти
-# XPATH_AIRPORTS_CHECK = "//tbody/child::tr/child::td/child::input[@type='checkbox']" # Чек-боксы списка найденых аэропортов
 XPATH_AIRPORTS_CHECK = "//a[contains(text(),'Образец')]"
 XPATH_AIRPORTS_ACTION = "//select[@name='action']"  # Список выбора действия
 XPATH_AIRPORTS_DELETE = "//a[contains(text(),'Удалить')]"   # Кнопка Удалить
