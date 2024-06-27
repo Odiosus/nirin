@@ -2,8 +2,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: clamp(5.625rem, 3.943rem + 8.41vw, 10.25rem);
-  color: #2a3659;
 }
 .navigation__container {
   display: flex;
@@ -11,12 +9,12 @@
   gap: clamp(3.75rem, 2.409rem + 6.7vw, 7.438rem);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 960px) {
   .navigation {
-    column-gap: 28px;
-    margin-bottom: 0;
+    margin-top: 30px;
+    padding: 0 20px;
   }
   .navigation__container {
-    gap: 28px;
+    gap: clamp(3.75rem, 2.409rem + 6.7vw, 7.438rem);
   }
 }
