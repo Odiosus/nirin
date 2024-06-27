@@ -40,8 +40,8 @@
 .burger__menu_close_img::after {
   content: "";
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 30px;
+  right: 7px;
   transform: translate(-50%, -50%);
   width: 100%;
   height: 2px;
@@ -60,10 +60,35 @@
 .burger__menu_login {
   position: absolute;
   top: 50px;
-  right: 25px;
+  right: 40px;
 }
 .burger__menu_logo {
   position: absolute;
   top: 50px;
   left: 20px;
+}
+.burger__menu_phone {
+  position: absolute;
+  top: 50px;
+  right: 70px;
+}
+.buurger__navigation {
+  position: absolute;
+  top: 15%;
+  right: 5%;
+  height: 80%;
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.burger__navigation_link {
+  text-decoration: none;
+  font-size: 20px;
+  line-height: 24px;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 30px;
+  background-color: rgba(217, 217, 217, 0.31);
+  padding: 8px 14px;
 }

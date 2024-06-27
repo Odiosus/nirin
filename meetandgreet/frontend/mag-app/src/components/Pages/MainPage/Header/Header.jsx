@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./Header.module.css";
 import Video from "./video/Video";
 import Navigation from "./Navigation/Navigation";
@@ -12,7 +12,7 @@ export default function Header() {
       <div className={styles.header}>
         <Video />
         <div className={styles.header__container}>
-          <Navigation />
+          <Navigation visibleElem={false} />
           <div>
             <Title>VIP services</Title>
 
