@@ -1,28 +1,3 @@
-<<<<<<< HEAD
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
-# dependencies
-/node_modules
-/.pnp
-.pnp.js
-
-# testing
-/coverage
-
-# production
-/build
-
-# misc
-.DS_Store
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-=======
 ### main template
 # Django #
 *.log
@@ -172,4 +147,4 @@ GitHub.sublime-settings
 /povsite/.env
 /povsite/db.sqlite3
 /povsite/db-dump.json
->>>>>>> 3f301c960f816ebd146c33a8989325d87af14156
+node_modules

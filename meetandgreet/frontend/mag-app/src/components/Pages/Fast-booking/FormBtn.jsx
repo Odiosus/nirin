@@ -1,4 +1,4 @@
-import styles from "./Cities/fast-booking.module.css";
+import styles from "./fast-booking.module.css";
 
 export default function FormBtn({ children, navigate }) {
   return (

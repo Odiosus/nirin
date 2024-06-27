@@ -190,7 +190,7 @@ for (let i = 0; i < database.length; i++) {
   });
 }
 
-export default function Cities({ setFlight }) {
+export default function Cities({ setFlight, setServicesPage }) {
   const navigate = useNavigate();
   const [departureCity, setDepartureCity] = useState("");
   const [transitCity, setTransitCity] = useState("");
@@ -224,81 +224,79 @@ export default function Cities({ setFlight }) {
       arrivalIata: selectedArrivalCity && selectedArrivalCity[0].iata,
       arrivalService: selectedArrivalCity && selectedArrivalCity[0].service,
     });
-    navigate("/fast_booking");
+    setServicesPage(true);
   }
 
   return (
-    <>
-      <div className={styles.cities}>
-        <div className={styles.cities__bg}></div>
-        <Progress progress__header="Step 1 / Citites" />
-        <span className={styles.main__header}>City & airport</span>
-        <div className={styles.city__input__wrapper}>
-          <div className={styles.city__input}>
-            <img src={takeoff} alt="place icon" />
-            <input
-              placeholder="Departure"
-              type="text"
-              ref={inputDeparture}
-              list="airports"
-              value={departureCity}
-              onChange={(e) => setDepartureCity(e.target.value)}
-            />
-            {departureCity.length > 2 && (
-              <datalist id="airports">
-                {cities.map((city, i) => (
-                  <option key={i} value={city.fullName} />
-                ))}
-              </datalist>
-            )}
-          </div>
-
-          <div className={styles.city__input}>
-            <img src={transit} alt="place icon" />
-            <input
-              placeholder="Transit"
-              type="text"
-              ref={inputTransit}
-              list="airports"
-              value={transitCity}
-              onChange={(e) => setTransitCity(e.target.value)}
-            />
-            {transitCity.length > 2 && (
-              <datalist id="airports">
-                {cities.map((city, i) => (
-                  <option key={i} value={city.fullName} />
-                ))}
-              </datalist>
-            )}
-          </div>
-
-          <div className={styles.city__input}>
-            <img src={land} alt="place icon" />
-            <input
-              placeholder="Arrival"
-              type="text"
-              ref={inputArrival}
-              list="airports"
-              value={arrivalCity}
-              onChange={(e) => setArrivalCity(e.target.value)}
-            />
-            {arrivalCity.length > 2 && (
-              <datalist id="airports">
-                {cities.map((city, i) => (
-                  <option key={i} value={city.fullName} />
-                ))}
-              </datalist>
-            )}
-          </div>
+    <div className={styles.cities}>
+      <div className={styles.cities__bg}></div>
+      <Progress progress__header="Step 1 / Citites" />
+      <span className={styles.main__header}>City & airport</span>
+      <div className={styles.city__input__wrapper}>
+        <div className={styles.city__input}>
+          <img src={takeoff} alt="place icon" />
+          <input
+            placeholder="Departure"
+            type="text"
+            ref={inputDeparture}
+            list="airports"
+            value={departureCity}
+            onChange={(e) => setDepartureCity(e.target.value)}
+          />
+          {departureCity.length > 2 && (
+            <datalist id="airports">
+              {cities.map((city, i) => (
+                <option key={i} value={city.fullName} />
+              ))}
+            </datalist>
+          )}
         </div>
-        <FormBtn
-          navigate={() => {
-            handleSubmit();
-          }}
-        >
-          Continue
-        </FormBtn>
+
+        <div className={styles.city__input}>
+          <img src={transit} alt="place icon" />
+          <input
+            placeholder="Transit"
+            type="text"
+            ref={inputTransit}
+            list="airports"
+            value={transitCity}
+            onChange={(e) => setTransitCity(e.target.value)}
+          />
+          {transitCity.length > 2 && (
+            <datalist id="airports">
+              {cities.map((city, i) => (
+                <option key={i} value={city.fullName} />
+              ))}
+            </datalist>
+          )}
+        </div>
+
+        <div className={styles.city__input}>
+          <img src={land} alt="place icon" />
+          <input
+            placeholder="Arrival"
+            type="text"
+            ref={inputArrival}
+            list="airports"
+            value={arrivalCity}
+            onChange={(e) => setArrivalCity(e.target.value)}
+          />
+          {arrivalCity.length > 2 && (
+            <datalist id="airports">
+              {cities.map((city, i) => (
+                <option key={i} value={city.fullName} />
+              ))}
+            </datalist>
+          )}
+        </div>
       </div>
-    </>
+      <FormBtn
+        navigate={() => {
+          handleSubmit();
+        }}
+      >
+        Continue
+      </FormBtn>
+    </div>
   );
 }

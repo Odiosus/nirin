@@ -7,10 +7,15 @@ import FlightDateTime from "./FlightDateTime";
 export default function Flight({
   flight,
   setFlightNumber,
+  setFlightNumberTransit,
   setDepartureDate,
+  setDepartureDateTransit,
   setArrivalDate,
+  setArrivalDateTransit,
   setDepartureTime,
+  setDepartureTimeTransit,
   setArrivalTime,
+  setArrivalTimeTransit,
   disabled,
 }) {
   return (
@@ -60,10 +65,7 @@ export default function Flight({
               </div>
             </div>
             <div className={styles.flight__info}>
-              <FlightNumber
-                setFlightNumber={setFlightNumber}
-                disabled={disabled}
-              />
+              <FlightNumber setNumber={setFlightNumber} disabled={disabled} />
               <div className={styles.flight__date__wrapper}>
                 <FlightDateTime
                   flightType={"Departure Date"}
@@ -130,14 +132,37 @@ export default function Flight({
               </div>
             </div>
             <div className={styles.flight__info}>
-              <FlightNumber />
+              <FlightNumber
+                setNumber={setFlightNumberTransit}
+                disabled={disabled}
+              />
               <div className={styles.flight__date__wrapper}>
-                <FlightDateTime flightType="Departure Date" inputType="date" />
-                <FlightDateTime flightType="Arrival Date" inputType="date" />
+                <FlightDateTime
+                  flightType="Departure Date"
+                  inputType="date"
+                  setData={setDepartureDateTransit}
+                  disabled={disabled}
+                />
+                <FlightDateTime
+                  flightType="Arrival Date"
+                  inputType="date"
+                  setData={setArrivalDateTransit}
+                  disabled={disabled}
+                />
               </div>
               <div className={styles.flight__date__wrapper}>
-                <FlightDateTime flightType="Departure Time" inputType="time" />
-                <FlightDateTime flightType="Arrival Time" inputType="time" />
+                <FlightDateTime
+                  flightType="Departure Time"
+                  inputType="time"
+                  setData={setDepartureTimeTransit}
+                  disabled={disabled}
+                />
+                <FlightDateTime
+                  flightType="Arrival Time"
+                  inputType="time"
+                  setData={setArrivalTimeTransit}
+                  disabled={disabled}
+                />
               </div>
             </div>
           </div>

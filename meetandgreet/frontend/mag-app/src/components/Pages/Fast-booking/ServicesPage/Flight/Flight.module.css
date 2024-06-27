@@ -59,6 +59,7 @@
 .flightNumber {
   width: 630px;
   height: 80px;
+  background-color: #fff;
   border-radius: 30px;
   padding: 26px;
   font-size: 20px;
@@ -107,6 +108,7 @@
   width: 305px;
   height: 80px;
   border-radius: 30px;
+  background-color: #fff;
   color: #2a3659;
   font-size: 20px;
   font-weight: bold;

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Contacts from "./Contacts/Contacts";
 import SubtotalServicesList from "./Subtotal/SubtotalServicesList";
 import SubtotalNote from "./Subtotal/SubtotalNote";
@@ -8,16 +9,23 @@ import FormBtn from "../FormBtn";
 import styles from "./ServicesPage.module.css";
 import Travelers from "./Travelers/Travelers";
 import Progress from "../Progress";
-import { useNavigate } from "react-router-dom";
-import { useState } from "react";
 
-export default function ServicesPage({ flight, setFlightDetails }) {
-  const navigate = useNavigate();
+export default function ServicesPage({
+  flight,
+  setFlightDetails,
+  setServicesPage,
+  setConfirmationPage,
+}) {
   const [flightNumber, setFlightNumber] = useState("");
+  const [flightNumberTransit, setFlightNumberTransit] = useState("");
   const [departureDate, setDepartureDate] = useState("");
+  const [departureDateTransit, setDepartureDateTransit] = useState("");
   const [arrivalDate, setArrivalDate] = useState("");
+  const [arrivalDateTransit, setArrivalDateTransit] = useState("");
   const [departureTime, setDepartureTime] = useState("");
+  const [departureTimeTransit, setDepartureTimeTransit] = useState("");
   const [arrivalTime, setArrivalTime] = useState("");
+  const [arrivalTimeTransit, setArrivalTimeTransit] = useState("");
   const [fullName, setFullName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
@@ -32,10 +40,15 @@ export default function ServicesPage({ flight, setFlightDetails }) {
       departureCity: flight.departureCity,
       arrivalCity: flight.arrivalCity,
       flightNumber: flightNumber,
+      flightNumberTransit: flightNumberTransit,
       departureDate: departureDate,
+      departureDateTransit: departureDateTransit,
       arrivalDate: arrivalDate,
+      arrivalDateTransit: arrivalDateTransit,
       departureTime: departureTime,
+      departureTimeTransit: departureTimeTransit,
       arrivalTime: arrivalTime,
+      arrivalTimeTransit: arrivalTimeTransit,
       fullName: fullName,
       phone: phone,
       emai: email,
@@ -68,10 +81,15 @@ export default function ServicesPage({ flight, setFlightDetails }) {
       <Flight
         flight={flight}
         setFlightNumber={setFlightNumber}
+        setFlightNumberTransit={setFlightNumberTransit}
         setDepartureDate={setDepartureDate}
+        setDepartureDateTransit={setDepartureDateTransit}
         setArrivalDate={setArrivalDate}
+        setArrivalDateTransit={setArrivalDateTransit}
         setDepartureTime={setDepartureTime}
+        setDepartureTimeTransit={setDepartureTimeTransit}
         setArrivalTime={setArrivalTime}
+        setArrivalTimeTransit={setArrivalTimeTransit}
         disabled={subtotal}
       />
       <Contacts
@@ -96,15 +114,16 @@ export default function ServicesPage({ flight, setFlightDetails }) {
       ) : (
         <ServiceName flight={flight} />
       )}
+
       <div className={styles.service__buttons}>
         {subtotal ? (
           <FormBtn navigate={() => setSubtotal(false)}>Back</FormBtn>
         ) : (
-          <FormBtn navigate={() => navigate("/cities")}>Back</FormBtn>
+          <FormBtn navigate={() => setServicesPage(false)}>Back</FormBtn>
         )}
         <FormBtn>Save</FormBtn>
         {subtotal ? (
-          <FormBtn navigate={() => navigate("/confirmation")}>Complete</FormBtn>
+          <FormBtn navigate={() => setConfirmationPage(true)}>Complete</FormBtn>
         ) : (
           <FormBtn navigate={() => handleSubmit()}>Continue</FormBtn>
         )}
