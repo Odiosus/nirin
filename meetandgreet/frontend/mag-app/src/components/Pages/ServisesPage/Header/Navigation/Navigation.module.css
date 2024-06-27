@@ -11,7 +11,7 @@
 
 @media (max-width: 960px) {
   .navigation {
-    margin-bottom: clamp(3.125rem, 1.475rem + 8.25vw, 11.375rem);
+    margin-top: 30px;
     padding: 0 20px;
   }
   .navigation__container {

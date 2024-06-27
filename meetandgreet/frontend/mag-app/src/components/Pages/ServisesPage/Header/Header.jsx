@@ -9,7 +9,7 @@ export default function Header() {
     <>
       <div className={styles.header}>
         <div className={styles.header__container}>
-          <Navigation />
+          <Navigation visibleElem={false} />
           <div className={styles.header__title}>
             <Title>Services</Title>
 

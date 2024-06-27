@@ -35,5 +35,6 @@
 @media (max-width: 380px) {
   .header__container {
     width: 90%;
+    padding: 0;
   }
 }
