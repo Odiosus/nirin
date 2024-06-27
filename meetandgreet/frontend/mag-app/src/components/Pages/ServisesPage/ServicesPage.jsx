@@ -8,8 +8,8 @@ export default function ServisecPage() {
   return (
     <div className={styles.servicesPage}>
       <Header />
-      {/* <Main /> */}
-      {/* <Footer /> */}
+      <Main />
+      <Footer />
     </div>
   );
 }
