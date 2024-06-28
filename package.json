@@ -1,0 +1,12 @@
+{
+  "name": "nirin",
+  "version": "1.0.0",
+  "description": "Это API для компании Meet and Greet, который включает в себя API для всплывающего чата с ботом, поиска аэропортов, формы заполнения бронирований и т.д. API документация предоставляется с использованием Swagger.",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

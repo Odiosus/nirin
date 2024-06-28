@@ -69,14 +69,7 @@ export default function FastBookingForm() {
           <label className={styles.label} htmlFor="citySelect">
             <img src={src_plane_came} alt="city arrived" />
           </label>
-          <select className={styles.input} id="citySelect">
-            <option value="">airports</option>
-            {filteredCities.map((city, i) => (
-              <option className={styles.option} key={i} value={city.city}>
-                {city.city}
-              </option>
-            ))}
-          </select>
+          <input type="text" placeholder="arrival" />
         </div>
       </div>
     </div>

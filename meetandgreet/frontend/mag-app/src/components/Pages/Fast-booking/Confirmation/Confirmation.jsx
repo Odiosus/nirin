@@ -32,12 +32,6 @@ export default function Confirmation() {
         </div>
 
         <h1 className={styles.confirmation__text__email}>CHECK YOUR EMAIL</h1>
-
-        <img
-          className={styles.confirmation__img}
-          src={logo}
-          alt="meet and greet logo"
-        />
       </div>
     </div>
   );

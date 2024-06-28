@@ -98,7 +98,7 @@ export default function FastBookingForm() {
         </div>
 
         <div className={styles.button__link}>
-          <Link to="/servises" className={styles.button}>
+          <Link to="/fast_booking" className={styles.button}>
             <img src={src_search} alt="search" />
           </Link>
         </div>
