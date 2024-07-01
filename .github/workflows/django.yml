@@ -57,6 +57,7 @@ jobs:
       run: |
         git config --global user.name 'GitHub Action'
         git config --global user.email 'action@github.com'
-        git remote add deploy https://${DEPLOY_REPO_TOKEN}@github.com/melixz/nirin_deploy.git
+        git remote add deploy https://${{ secrets.GITHUB_ACTOR }}:${DEPLOY_REPO_TOKEN}@github.com/melixz/nirin_deploy.git
         git checkout frontend
         git push deploy frontend:main --force
+    
