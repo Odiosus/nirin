@@ -2,9 +2,9 @@ name: Django CI and Sync
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "frontend" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "frontend" ]
 
 jobs:
   build:
@@ -44,7 +44,7 @@ jobs:
   sync:
     needs: build
     runs-on: ubuntu-latest
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    if: github.event_name == 'push' && github.ref == 'refs/heads/frontend'
 
     steps:
     - uses: actions/checkout@v4
@@ -58,4 +58,5 @@ jobs:
         git config --global user.name 'GitHub Action'
         git config --global user.email 'action@github.com'
         git remote add deploy https://${DEPLOY_REPO_TOKEN}@github.com/melixz/nirin_deploy.git
-        git push deploy main:main --force
+        git checkout frontend
+        git push deploy frontend:main --force
