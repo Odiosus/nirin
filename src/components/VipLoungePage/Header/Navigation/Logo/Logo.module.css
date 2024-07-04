@@ -1,0 +1,23 @@
+.logo__container {
+  width: 167px;
+  height: 45px;
+}
+.logo {
+  background-image: url("../../../../../assets/vip_lounge_header__logo.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .logo__container {
+    width: 46px;
+    height: 50px;
+  }
+  .logo {
+    background-image: url("../../../../../assets/vip_lounge_logo_small.svg");
+  }
+}

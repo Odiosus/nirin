@@ -1,0 +1,125 @@
+.header {
+  color: #2a3659;
+}
+
+.header__container {
+  max-width: 1280px;
+  margin-inline: auto;
+}
+
+.header__top {
+  margin: clamp(2.25rem, 0.947rem + 1.29vw, 2.5rem) 0
+    clamp(1.563rem, 1.335rem + 0.97vw, 2.5rem);
+
+  min-height: clamp(8.75rem, 7.84rem + 3.88vw, 8.5rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.header__stub {
+  height: 42px;
+  width: 100%;
+  background-color: gray;
+}
+
+.header__slide {
+  display: flex;
+  align-items: center;
+}
+
+.slide__link_left,
+.slide__link_right {
+  display: flex;
+  position: relative;
+  width: 70px;
+  height: 48px;
+  border-radius: 20px;
+  background-color: rgba(163, 163, 163, 0.26);
+  transition: all 0.3s ease;
+}
+
+.slide__link_left:hover,
+.slide__link_right:hover {
+  transform: scale(1.05);
+}
+
+.slide__link_left::before,
+.slide__link_right::before {
+  content: "";
+  position: absolute;
+  background: url("../../../assets/vip_lounge_header__arrow_left.svg") center
+    no-repeat;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 18px;
+  height: 16px;
+}
+
+.slide__link_right::before {
+  background: url("../../../assets/vip_lounge_header__arrow_right.svg") center
+    no-repeat;
+}
+
+.slide__title {
+  margin-inline: auto;
+
+  font-size: clamp(2.25rem, 2.038rem + 0.91vw, 3.125rem);
+  line-height: clamp(2.25rem, 2.038rem + 0.91vw, 3.125rem);
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+hr {
+  background-color: #8ba8bf;
+}
+
+.header__bunner {
+  max-width: 1778px;
+  overflow: hidden;
+}
+
+.header__bunner img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: clamp(0rem, -0.917rem + 3.06vw, 2.75rem);
+
+  margin-top: 40px;
+}
+
+@media (max-width: 768px) {
+  .header__bunner img {
+    min-height: 783px;
+    object-fit: cover;
+  }
+}
+
+@media (max-width: 376px) {
+  .header__bunner img {
+    min-height: 450px;
+  }
+
+  .header hr {
+    width: 90%;
+    margin-inline: auto;
+  }
+
+  .header__top {
+    margin-bottom: 0px;
+    min-height: clamp(-5.25rem, 4rem + 3.88vw, 8.5rem);
+  }
+
+  .slide__link_left,
+  .slide__link_right {
+    width: 49px;
+  }
+
+  .header__slide {
+    margin-inline: auto;
+    margin-top: 95px;
+    margin-bottom: 50px;
+    gap: 18px;
+  }
+}
