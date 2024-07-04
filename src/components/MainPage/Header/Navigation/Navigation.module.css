@@ -38,7 +38,9 @@
   justify-content: space-between;
   gap: 18px;
 }
-a p {
+.header__fastbooking__link p,
+.header__services_btn p,
+.header__travelers_btn p {
   color: #fff;
   text-decoration: none;
   text-transform: capitalize;

@@ -5,6 +5,7 @@
   transition: all 0.8s;
   position: relative;
   text-align: left;
+  overflow: hidden;
 }
 .card__bgr {
   background-image: url("../../../../../assets/hotels_new_image_2.jpeg");
@@ -24,7 +25,11 @@
   font-weight: 400;
   min-height: clamp(9.375rem, 2.375rem + 11.67vw, 11.125rem);
 }
-
+.card__title {
+  font-size: clamp(3.25rem, 0.25rem + 5vw, 4rem);
+  line-height: clamp(4.5rem, 2.5rem + 3.33vw, 5rem);
+  font-weight: 400;
+}
 @media (max-width: 960px) {
   .card {
     height: 100vh;
