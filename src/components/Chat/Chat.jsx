@@ -1,5 +1,4 @@
-/*
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 export default function Chat() {
   const TOKEN = "6d8a970a70a78d358884d56db78ce22e";
@@ -12,4 +11,3 @@ export default function Chat() {
   });
   return <div></div>;
 }
- */
