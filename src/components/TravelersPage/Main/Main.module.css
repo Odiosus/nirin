@@ -1,0 +1,8 @@
+.main__container {
+  padding-inline: 0;
+}
+@media (min-width: 1440px) {
+  .main__container {
+    max-width: 1780px;
+  }
+}

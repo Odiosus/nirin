@@ -1,0 +1,20 @@
+.subTitle {
+  font-size: clamp(0.75rem, 0.725rem + 0.13vw, 0.875rem);
+  line-height: clamp(1rem, 0.975rem + 0.13vw, 1.125rem);
+  color: #2a3659;
+  width: 373px;
+  margin-bottom: 52px;
+}
+.subTitleBox {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  width: 50%;
+  height: 284px;
+  text-align: left;
+}
+@media (max-width: 960px) {
+  .subTitle {
+    width: auto;
+  }
+}

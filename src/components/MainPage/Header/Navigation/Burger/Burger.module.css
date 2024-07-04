@@ -1,0 +1,41 @@
+.burger__container {
+  background-color: rgba(217, 217, 217, 0.31);
+  width: 42px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  border-radius: 16px;
+}
+.burger {
+  width: 12px;
+  height: 1px;
+  background-color: white;
+  position: relative;
+}
+
+.burger::before {
+  content: "";
+  position: absolute;
+  width: 12px;
+  height: 1px;
+  background-color: white;
+  top: -4px;
+}
+
+.burger::after {
+  content: "";
+  position: absolute;
+  width: 12px;
+  height: 1px;
+  background-color: white;
+  top: 4px;
+}
+
+@media (min-width: 992px) {
+  .burger__container {
+    display: none;
+  }
+}

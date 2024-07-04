@@ -1,0 +1,91 @@
+.wishes__row {
+  margin: 0;
+  padding-top: 94px;
+  padding-bottom: 30px;
+  background-color: #fff;
+}
+.wishes__image {
+  height: 405px;
+  width: 100%;
+  background-image: url("../../../../assets/travelers_bgr_icon_last_section.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+.wishes__text {
+  margin-top: 30px;
+  font-size: 24px;
+  font-weight: 500;
+  text-transform: uppercase;
+  width: 80%;
+}
+.wishes__span {
+  font-family: "PlayfairDisplay-Italic", serif;
+}
+.wishes__block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+}
+.wishes__button {
+  background-color: rgba(238, 238, 238, 1);
+  padding: 10px 29px;
+  font-size: 24px;
+  border-radius: 44px;
+}
+.wishes__text_box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+@media (min-width: 576px) {
+  .wishes__text {
+    width: 50%;
+  }
+}
+
+@media (min-width: 768px) {
+  .wishes__text {
+    width: 40%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .wishes__text {
+    width: 100%;
+    font-size: 37px;
+  }
+  .wishes__block {
+    flex-direction: row;
+    padding-block: 15%;
+  }
+  .wishes__text_box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    padding-inline: 2.3%;
+    width: 70%;
+  }
+  .wishes__button_box {
+    align-self: end;
+  }
+  .wishes__image {
+    width: 47%;
+  }
+}
+
+@media (min-width: 1400px) {
+  .wishes__text {
+    width: 93%;
+    font-size: 48px;
+  }
+  .wishes__image {
+    width: 40%;
+  }
+}

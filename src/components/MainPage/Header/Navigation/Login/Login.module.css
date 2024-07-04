@@ -1,0 +1,24 @@
+.login__container {
+  background-color: rgba(217, 217, 217, 0.31);
+  width: 42px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  border-radius: 16px;
+}
+
+.login {
+  padding: 7px 14px;
+  background-image: url("../../../../../assets/login_icon.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+@media (max-width: 770px) {
+  .login__container {
+    display: none;
+  }
+}

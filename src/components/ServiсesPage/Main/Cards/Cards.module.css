@@ -1,0 +1,7 @@
+.cards {
+  gap: 20px;
+  justify-content: space-between;
+}
+.cards__wrapper {
+  gap: 30px;
+}

@@ -1,0 +1,14 @@
+.questionsBlock {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.questionsBlock__container {
+  padding-block: 123px;
+  justify-content: center;
+}
+@media (min-width: 1400px) {
+  .questionsBlock__container {
+    max-width: 1200px;
+  }
+}

@@ -1,0 +1,58 @@
+.confirmation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  height: 80vh;
+}
+
+.confirmation__bg {
+  position: absolute;
+  background-image: url("../../../assets/fast-booking_main_bg.svg");
+  width: 254px;
+  top: 0;
+  left: 0;
+  bottom: 0;
+}
+
+.confirmation__text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 80vh;
+  color: #2a3659;
+  font-size: 24px;
+  position: relative;
+}
+
+.confirmation__text__name {
+  font-family: "PlayfairDisplay-Italic";
+  margin-bottom: 4rem;
+}
+
+.confirmation__text__name span {
+  font-family: "Manrope-Regular";
+  color: #9cbbcd;
+}
+
+.confirmation__text__account {
+  margin-top: 5rem;
+  margin-bottom: 2rem;
+}
+
+.confirmation__text__account span {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.confirmation__text__email {
+  font-family: "PlayfairDisplay-Italic";
+}
+
+.confirmation__img {
+  position: absolute;
+  bottom: 7rem;
+  right: -7rem;
+}

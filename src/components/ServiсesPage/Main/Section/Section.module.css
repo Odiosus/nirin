@@ -1,0 +1,10 @@
+.section {
+  background-image: url("../../../../assets/services__section_bgr.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 620px;
+  margin-top: 24px;
+  border-radius: 44px 44px 0 0;
+  margin-bottom: 75px;
+}

@@ -1,0 +1,172 @@
+.navigation {
+  z-index: 2;
+  overflow: hidden;
+  height: 100vh;
+  color: #2a3659;
+}
+
+.navigation__logo {
+  width: 165px;
+  height: 40px;
+  background-image: url("../../../../assets/header__logo_services.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.container {
+  height: 80vh;
+}
+.navigation__call_icon {
+  width: 20px;
+  height: 20px;
+  background-image: url("../../../../assets/phone__header_services.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.navigation__nav_link {
+  display: none;
+}
+.navigation__fastbooking__link {
+  display: block;
+  gap: 8px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+.col__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+.navigation__text {
+  color: #2a3659;
+  text-decoration: none;
+  text-transform: capitalize;
+}
+.buttons_wrapper {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.navigation__travelers_btn {
+  text-decoration: none;
+  background-color: rgba(217, 217, 217, 0.31);
+  cursor: pointer;
+  border-radius: 30px;
+  width: 122px;
+  height: 38px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.navigation__services_btn {
+  text-decoration: none;
+  background-color: rgba(217, 217, 217, 0.31);
+  cursor: pointer;
+  border-radius: 30px;
+  width: 122px;
+  height: 38px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.options__wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.navigation__services_btn {
+  display: flex;
+}
+.navigation__call_wrapper {
+  background-color: rgba(217, 217, 217, 0.31);
+  width: 42px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  border-radius: 16px;
+}
+.navigation__call_icon {
+  background-image: url("../../../../assets/phone__header_services.png");
+  background-size: 17px 17px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.title {
+  font-size: 35px;
+  line-height: 42px;
+  color: #fff;
+}
+.title__row {
+  text-align: center;
+  padding-top: 15%;
+  margin-bottom: 60px;
+}
+.subtitle {
+  font-size: 28px;
+  color: #fff;
+  text-transform: uppercase;
+}
+.subtitle__span {
+  font-family: "PlayfairDisplay-Italic", sans-serif;
+}
+
+@media (max-width: 768px) {
+  .title__row {
+    padding-top: 8%;
+    margin-bottom: 60px;
+  }
+}
+@media (max-width: 992px) {
+  .navigation__logo {
+    width: 36px;
+    height: 40px;
+    background-image: url("../../../../assets/header__logo_services_small.png");
+  }
+  .navigation__nav_link {
+    display: block;
+  }
+  .navigation__fastbooking__link {
+    display: none;
+  }
+  .navigation__services_btn,
+  .navigation__travelers_btn {
+    display: none;
+  }
+
+  .title__row {
+    padding-top: 10%;
+    margin-bottom: 15%;
+  }
+  .navigation {
+    height: 98%;
+  }
+}
+@media (min-width: 1200px) {
+  .title__row {
+    padding-top: 182px;
+    margin-bottom: 94px;
+  }
+  .title {
+    font-size: 60px;
+    line-height: 72px;
+  }
+  .subtitle {
+    font-size: 40px;
+  }
+}
+@media (min-width: 1400px) {
+  .container {
+    max-width: 1200px;
+  }
+  .title__row {
+    padding-top: 10%;
+    margin-bottom: 10%;
+  }
+}

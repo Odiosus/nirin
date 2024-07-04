@@ -1,0 +1,177 @@
+.main {
+  margin-top: -7%;
+  z-index: 5;
+  border-radius: 44px 44px 0 0;
+  background-color: #fff;
+}
+.row__main_title {
+  margin-bottom: 100px;
+}
+.card__img {
+  margin-left: 10px;
+}
+.main__title {
+  text-align: center;
+  text-transform: uppercase;
+  color: #2a3659;
+  font-size: 18px;
+  line-height: 24px;
+  margin-top: 100px;
+}
+.title__span {
+  font-family: "PlayfairDisplay-Italic", serif;
+}
+.cards__main {
+  padding-inline: 10px;
+  gap: 18px;
+}
+.card__text {
+  display: flex;
+  align-items: center;
+  color: #fff;
+  gap: 41px;
+}
+.meet_assist {
+  background-image: url("../../../assets/meet-assist.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 400px;
+  border-radius: 34px;
+}
+.fast_track {
+  background-image: url("../../../assets/fast-track.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 400px;
+  border-radius: 34px;
+}
+.vip_lounge {
+  background-image: url("../../../assets/vip_lounge_main.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 400px;
+  border-radius: 34px;
+}
+.airport_transfer {
+  background-image: url("../../../assets/airport_transportation_new_3.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 400px;
+  border-radius: 34px;
+}
+
+.officials_lounge {
+  background-image: url("../../../assets/officials_lounge_main.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 400px;
+  border-radius: 34px;
+}
+.cip_service {
+  background-image: url("../../../assets/cip_service_main.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 400px;
+  border-radius: 34px;
+}
+.card__img {
+  background-image: url("../../../assets/arrow_btn_services.png");
+  height: 28px;
+  width: 28px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.main__text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+.card__title {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  color: #fff;
+  font-size: 32px;
+  line-height: 40px;
+  text-transform: uppercase;
+
+  border-radius: 34px 34px 0 0;
+}
+.card__title p {
+  padding-inline: 5px;
+}
+.card__text {
+  padding-inline: 5px;
+  border-radius: 0 0 34px 34px;
+}
+.services__row {
+  padding-top: 10%;
+}
+
+.col__main_card {
+  height: clamp(36.263rem, 27.358rem + 14.84vw, 38.489rem);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 30.79px;
+  cursor: pointer;
+  transition: all 0.8s;
+}
+.col__main_card:hover {
+  width: clamp(30rem, 10rem + 33.33vw, 35rem);
+}
+
+@media (min-width: 768px) {
+  .col__main_card {
+    width: 46%;
+  }
+
+  .main__title {
+    font-size: 22px;
+    line-height: 28px;
+    width: 44%;
+  }
+  .meet_assist {
+    width: 48%;
+  }
+}
+@media (min-width: 992px) {
+  .cards__main {
+    justify-content: center;
+  }
+  .col__main_card {
+    width: 32%;
+  }
+  .main__title {
+    font-size: 40px;
+    line-height: 62px;
+    width: 54%;
+  }
+}
+@media (min-width: 1200px) {
+  .cards__main {
+    flex-wrap: nowrap;
+  }
+  .col__main_card {
+    width: 15%;
+  }
+  .main__title {
+    font-size: 54px;
+    line-height: 70px;
+    width: 70%;
+  }
+}
+@media (min-width: 1400px) {
+  .main__container {
+    max-width: 1200px;
+  }
+}

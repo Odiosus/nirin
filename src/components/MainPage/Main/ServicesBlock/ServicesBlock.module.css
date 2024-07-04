@@ -1,0 +1,23 @@
+.servicesBlock {
+  width: 100%;
+  min-height: 100vh;
+}
+.servicesBlock__container {
+  display: flex;
+  align-items: center;
+  gap: clamp(0.438rem, -0.813rem + 2.08vw, 0.75rem);
+  height: 100%;
+  width: 100%;
+}
+
+@media (max-width: 960px) {
+  .servicesBlock__container {
+    flex-direction: column;
+  }
+}
+@media (min-width: 1400px) {
+  .servicesBlock__container {
+    max-width: 100%;
+    margin: 0 auto;
+  }
+}

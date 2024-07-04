@@ -1,0 +1,33 @@
+.airports {
+  width: 100%;
+  padding-inline: clamp(0.938rem, 0.188rem + 1.25vw, 1.125rem);
+  margin-bottom: 64px;
+}
+.airports__wrapper {
+  display: flex;
+  align-items: center;
+  gap: clamp(1rem, 1.67vw, 1.25rem);
+  margin-block: clamp(5.625rem, -1.875rem + 12.5vw, 7.5rem);
+}
+.airports__btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.airports__btn_btn {
+  text-decoration: none;
+  background-color: #cbd7e2;
+  cursor: pointer;
+  border-radius: 44px;
+  padding: 18.5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #2a3659;
+  font-size: 24px;
+}
+@media (max-width: 960px) {
+  .airports__wrapper {
+    flex-direction: column;
+  }
+}

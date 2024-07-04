@@ -1,0 +1,19 @@
+.fastbooking__btn {
+  background-color: rgba(217, 217, 217, 0.31);
+  border-radius: 20px;
+  height: 30px;
+  width: 42px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.plane {
+  padding: 8px 14px;
+  display: block;
+  background-image: url("../../../../../assets/plane__header_services.png");
+  border-radius: 20px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}

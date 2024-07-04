@@ -1,24 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, Routes } from "react-router-dom";
+import "./App.css";
+import MainPage from "./components/MainPage/MainPage.jsx";
+import ServicesPage from "./components/ServiсesPage/ServicesPage.jsx";
+import Fastbooking from "./components/Fast-booking/FastBookingForm.jsx";
+import TravelersPage from "./components/TravelersPage/TravelersPage.jsx";
+import BurgerBody from "./components/BurgerBody/BurgerBody.jsx";
+import { MenuContext } from "./components/MenuContext/MenuContext.js";
+import { useEffect, useState } from "react";
 
 function App() {
+  const [isBurgerBodyVisible, setIsBurgerBodyVisible] = useState(false);
+
+  const toggleMenu = () => {
+    setIsBurgerBodyVisible(!isBurgerBodyVisible);
+  };
+  useEffect(() => {
+    if (isBurgerBodyVisible) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [isBurgerBodyVisible]);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <MenuContext.Provider
+      value={{ isBurgerBodyVisible, setIsBurgerBodyVisible, toggleMenu }}
+    >
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<MainPage />} />
+          <Route path="/fastbooking" element={<Fastbooking />} />
+          <Route path="/services" element={<ServicesPage />} />
+          <Route path="/travelers" element={<TravelersPage />} />
+        </Routes>
+        <BurgerBody />
+      </div>
+    </MenuContext.Provider>
   );
 }
 

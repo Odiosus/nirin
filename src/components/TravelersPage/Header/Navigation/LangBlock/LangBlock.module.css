@@ -1,0 +1,12 @@
+.lang__block {
+  gap: 8px;
+  text-transform: capitalize;
+}
+.lang__block a {
+  color: #2a3659;
+  text-decoration: none;
+}
+a .active {
+  text-decoration: underline;
+  color: #fff;
+}
